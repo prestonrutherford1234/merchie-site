@@ -1615,22 +1615,35 @@ section {
   50% { opacity: 0.8; }
 }
 
-/* --- Octopus SVG Animations --- */
-.octopus-svg .tentacle-group {
-  transform-origin: top center;
+/* --- Mochi SVG Animations --- */
+.mochi-svg .body-main {
+  animation: mochiSquish 3s ease-in-out infinite;
+  transform-origin: center bottom;
 }
 
-.octopus-svg .tentacle-1 { animation: tentacleSway 4s ease-in-out infinite; }
-.octopus-svg .tentacle-2 { animation: tentacleSway2 3.5s ease-in-out infinite 0.3s; }
-.octopus-svg .tentacle-3 { animation: tentacleSway 4.2s ease-in-out infinite 0.6s; }
-.octopus-svg .tentacle-4 { animation: tentacleSway2 3.8s ease-in-out infinite 0.9s; }
-.octopus-svg .tentacle-5 { animation: tentacleSway 3.6s ease-in-out infinite 0.2s; }
-.octopus-svg .tentacle-6 { animation: tentacleSway2 4.1s ease-in-out infinite 0.5s; }
-.octopus-svg .tentacle-7 { animation: tentacleSway 3.9s ease-in-out infinite 0.8s; }
-.octopus-svg .tentacle-8 { animation: tentacleSway2 4.3s ease-in-out infinite 0.1s; }
+@keyframes mochiSquish {
+  0%, 100% { transform: scaleX(1) scaleY(1); }
+  50% { transform: scaleX(1.02) scaleY(0.98); }
+}
 
-.octopus-svg .body-main {
-  animation: gentleBob 5s ease-in-out infinite;
+.mochi-svg .mochi-arm-l {
+  animation: armWaveL 4s ease-in-out infinite;
+  transform-origin: right center;
+}
+
+.mochi-svg .mochi-arm-r {
+  animation: armWaveR 4.3s ease-in-out infinite 0.5s;
+  transform-origin: left center;
+}
+
+@keyframes armWaveL {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg) translateY(-3px); }
+}
+
+@keyframes armWaveR {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg) translateY(-3px); }
 }
 
 /* --- Cursor Glow --- */

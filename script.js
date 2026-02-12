@@ -302,13 +302,13 @@ function initOctoBuddy() {
   let hasShownGreeting = false;
   let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
 
-  // Mouth shapes for different moods
+  // Mouth shapes for different moods (mochi face proportions)
   const mouths = {
-    neutral: 'M25 34 Q32 38, 39 34',
-    content: 'M25 34 Q32 40, 39 34',
-    happy: 'M24 33 Q32 42, 40 33',
-    veryHappy: 'M23 32 Q32 44, 41 32',
-    ecstatic: 'M22 31 Q32 46, 42 31'
+    neutral: 'M26 39 Q32 42, 38 39',
+    content: 'M26 39 Q32 44, 38 39',
+    happy: 'M25 38 Q32 46, 39 38',
+    veryHappy: 'M24 37 Q32 48, 40 37',
+    ecstatic: 'M23 36 Q32 50, 41 36'
   };
 
   // Show buddy after scrolling past hero
