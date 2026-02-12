@@ -800,6 +800,44 @@
     </div>
   </footer>
 
+  <!-- Floating Octopus Buddy -->
+  <div id="octoBuddy" class="octo-buddy" aria-hidden="true">
+    <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="32" cy="26" rx="24" ry="22" fill="#FF6B6B"/>
+      <ellipse cx="32" cy="26" rx="24" ry="22" fill="url(#buddy-shine)" opacity="0.3"/>
+      <defs><radialGradient id="buddy-shine" cx="35%" cy="25%"><stop offset="0%" stop-color="white" stop-opacity="0.4"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs>
+      <!-- Eyes -->
+      <circle cx="23" cy="24" r="7" fill="white"/>
+      <circle cx="41" cy="24" r="7" fill="white"/>
+      <circle class="buddy-pupil-l" cx="24.5" cy="24" r="4" fill="#1B4332"/>
+      <circle class="buddy-pupil-r" cx="42.5" cy="24" r="4" fill="#1B4332"/>
+      <circle cx="26" cy="22.5" r="1.5" fill="white"/>
+      <circle cx="44" cy="22.5" r="1.5" fill="white"/>
+      <!-- Monocle -->
+      <circle cx="41" cy="24" r="9" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
+      <line x1="50" y1="24" x2="55" y2="32" stroke="#D4A84B" stroke-width="1"/>
+      <!-- Mouth (changes with mood) -->
+      <path class="buddy-mouth" d="M25 34 Q32 38, 39 34" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- Cheeks (grow with happiness) -->
+      <circle class="buddy-cheek-l" cx="17" cy="32" r="3" fill="#F4A261" opacity="0.3"/>
+      <circle class="buddy-cheek-r" cx="47" cy="32" r="3" fill="#F4A261" opacity="0.3"/>
+      <!-- Tentacles -->
+      <path d="M12 44 C8 50, 6 56, 10 60 C14 62, 16 58, 14 54" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M20 47 C17 54, 15 60, 19 62 C22 63, 23 59, 21 56" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M32 48 C32 55, 31 60, 34 62 C37 63, 37 58, 35 55" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M44 47 C47 54, 49 60, 45 62 C42 63, 41 59, 43 56" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M52 44 C56 50, 58 56, 54 60 C50 62, 48 58, 50 54" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <!-- Speech bubble -->
+    <div class="buddy-bubble" id="buddyBubble"></div>
+    <!-- Hearts/stars that appear during celebrations -->
+    <div class="buddy-particles" id="buddyParticles"></div>
+  </div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
   <script src="script.js"></script>
 </body>
 </html>

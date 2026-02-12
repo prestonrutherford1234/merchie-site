@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initFAQ();
   initSignupForms();
+  initOctoBuddy();
+  initConfetti();
 });
 
 /* --- Navigation Scroll Effect --- */
@@ -186,9 +188,16 @@ function initSignupForms() {
       const email = document.getElementById('heroEmail').value.trim();
       if (!email) return;
 
-      // Identify in Customer.io with email only (step 1)
       identifyInCIO({ email });
       transitionStep('heroStep1', 'heroStep2');
+
+      // Celebration: buddy gets happy + small confetti burst
+      if (window.octoBuddy) {
+        window.octoBuddy.setMood('happy');
+        window.octoBuddy.say("Nice! Tell me more!");
+        window.octoBuddy.emitParticles(['✨', '⭐', '💫'], 5);
+      }
+      if (window.confetti) window.confetti.burst(30);
     });
   }
 
@@ -200,9 +209,16 @@ function initSignupForms() {
       const revenue = document.getElementById('heroRevenue').value;
       const challenge = document.getElementById('heroChallenge').value.trim();
 
-      // Update the person in Customer.io with additional details
       identifyInCIO({ email, company, revenue, challenge });
       transitionStep('heroStep2', 'heroStep3');
+
+      // BIG celebration: ecstatic octopus + confetti explosion + hearts
+      if (window.octoBuddy) {
+        window.octoBuddy.setMood('ecstatic');
+        window.octoBuddy.say("YOU'RE IN! 🎉🎉🎉");
+        window.octoBuddy.emitParticles(['❤️', '🎁', '🎉', '🌟', '💝', '🎊'], 15);
+      }
+      if (window.confetti) window.confetti.explosion(150);
     });
   }
 
@@ -217,6 +233,13 @@ function initSignupForms() {
 
       identifyInCIO({ email });
       transitionStep('footerStep1', 'footerStep2');
+
+      if (window.octoBuddy) {
+        window.octoBuddy.setMood('ecstatic');
+        window.octoBuddy.say("Welcome aboard! 🎉");
+        window.octoBuddy.emitParticles(['❤️', '🎉', '🌟', '💝'], 10);
+      }
+      if (window.confetti) window.confetti.explosion(100);
     });
   }
 
@@ -259,6 +282,265 @@ function initSignupForms() {
       });
     }, 300);
   }
+}
+
+/* --- Floating Octopus Buddy --- */
+function initOctoBuddy() {
+  const buddy = document.getElementById('octoBuddy');
+  const bubble = document.getElementById('buddyBubble');
+  const particles = document.getElementById('buddyParticles');
+  const mouth = buddy?.querySelector('.buddy-mouth');
+  const cheekL = buddy?.querySelector('.buddy-cheek-l');
+  const cheekR = buddy?.querySelector('.buddy-cheek-r');
+  if (!buddy) return;
+
+  let currentMood = 'neutral';
+  let bubbleTimeout = null;
+  let hasShownGreeting = false;
+  let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
+
+  // Mouth shapes for different moods
+  const mouths = {
+    neutral: 'M25 34 Q32 38, 39 34',
+    content: 'M25 34 Q32 40, 39 34',
+    happy: 'M24 33 Q32 42, 40 33',
+    veryHappy: 'M23 32 Q32 44, 41 32',
+    ecstatic: 'M22 31 Q32 46, 42 31'
+  };
+
+  // Show buddy after scrolling past hero
+  const showThreshold = 400;
+  let isVisible = false;
+
+  function updateOnScroll() {
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollY / docHeight) * 100;
+
+    // Show/hide buddy
+    if (scrollY > showThreshold && !isVisible) {
+      isVisible = true;
+      buddy.classList.add('visible');
+      if (!hasShownGreeting) {
+        hasShownGreeting = true;
+        setTimeout(() => say("Hey! I'm Merchie 👋"), 500);
+      }
+    } else if (scrollY <= showThreshold && isVisible) {
+      isVisible = false;
+      buddy.classList.remove('visible');
+    }
+
+    // Progressive happiness based on scroll depth
+    if (scrollPercent < 20) {
+      setMoodQuiet('neutral');
+    } else if (scrollPercent < 40) {
+      setMoodQuiet('content');
+      if (!scrollMilestones['25']) {
+        scrollMilestones['25'] = true;
+        say("Keep going! ✨");
+        emitParticles(['✨'], 2);
+      }
+    } else if (scrollPercent < 60) {
+      setMoodQuiet('happy');
+      if (!scrollMilestones['50']) {
+        scrollMilestones['50'] = true;
+        say("Ooh, good stuff! 🤓");
+        emitParticles(['⭐', '✨'], 3);
+      }
+    } else if (scrollPercent < 80) {
+      setMoodQuiet('veryHappy');
+      if (!scrollMilestones['75']) {
+        scrollMilestones['75'] = true;
+        say("Almost there! 🎯");
+        emitParticles(['🌟', '⭐', '💫'], 4);
+      }
+    } else {
+      setMoodQuiet('ecstatic');
+      if (!scrollMilestones['100']) {
+        scrollMilestones['100'] = true;
+        say("You made it! Join us! 🎉");
+        emitParticles(['🎉', '❤️', '🌟'], 5);
+        if (window.confetti) window.confetti.burst(20);
+      }
+    }
+  }
+
+  // Set mood without animation trigger (for scroll-based updates)
+  function setMoodQuiet(mood) {
+    if (currentMood === mood) return;
+    currentMood = mood;
+    if (mouth) mouth.setAttribute('d', mouths[mood] || mouths.neutral);
+
+    // Cheeks get rosier with happiness
+    const cheekOpacity = { neutral: 0.3, content: 0.35, happy: 0.45, veryHappy: 0.55, ecstatic: 0.65 };
+    const cheekSize = { neutral: 3, content: 3.5, happy: 4, veryHappy: 4.5, ecstatic: 5 };
+    const op = cheekOpacity[mood] || 0.3;
+    const sz = cheekSize[mood] || 3;
+    if (cheekL) { cheekL.setAttribute('opacity', op); cheekL.setAttribute('r', sz); }
+    if (cheekR) { cheekR.setAttribute('opacity', op); cheekR.setAttribute('r', sz); }
+  }
+
+  // Set mood WITH animation (for event-triggered celebrations)
+  function setMood(mood) {
+    setMoodQuiet(mood);
+    buddy.classList.remove('happy', 'very-happy', 'ecstatic');
+    void buddy.offsetWidth; // force reflow
+    if (mood === 'happy' || mood === 'content') buddy.classList.add('happy');
+    else if (mood === 'veryHappy') buddy.classList.add('very-happy');
+    else if (mood === 'ecstatic') buddy.classList.add('ecstatic');
+  }
+
+  function say(text) {
+    if (!bubble) return;
+    bubble.textContent = text;
+    bubble.classList.add('show');
+    if (bubbleTimeout) clearTimeout(bubbleTimeout);
+    bubbleTimeout = setTimeout(() => {
+      bubble.classList.remove('show');
+    }, 3000);
+  }
+
+  function emitParticles(emojis, count) {
+    if (!particles) return;
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        const p = document.createElement('span');
+        p.className = 'buddy-particle';
+        p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = (Math.random() * 40 - 10) + 'px';
+        p.style.animationDelay = (Math.random() * 0.3) + 's';
+        p.style.animationDuration = (1 + Math.random() * 0.8) + 's';
+        particles.appendChild(p);
+        setTimeout(() => p.remove(), 2000);
+      }, i * 100);
+    }
+  }
+
+  // Throttled scroll listener
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateOnScroll();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  });
+
+  // Expose API for form celebrations
+  window.octoBuddy = { setMood, say, emitParticles };
+}
+
+/* --- Confetti System --- */
+function initConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animating = false;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const colors = ['#FF6B6B', '#F4A261', '#1B4332', '#D4A84B', '#C73D75', '#FF9E9E', '#4CAF50', '#2196F3'];
+
+  function createParticle(x, y) {
+    return {
+      x: x || Math.random() * canvas.width,
+      y: y || -10,
+      vx: (Math.random() - 0.5) * 12,
+      vy: Math.random() * -8 - 4,
+      gravity: 0.15 + Math.random() * 0.1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: Math.random() * 8 + 4,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 10,
+      opacity: 1,
+      decay: 0.005 + Math.random() * 0.005,
+      shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    };
+  }
+
+  function animate() {
+    if (particles.length === 0) { animating = false; return; }
+    animating = true;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles = particles.filter(p => {
+      p.x += p.vx;
+      p.vy += p.gravity;
+      p.y += p.vy;
+      p.rotation += p.rotationSpeed;
+      p.opacity -= p.decay;
+      p.vx *= 0.99;
+
+      if (p.opacity <= 0 || p.y > canvas.height + 20) return false;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+
+      if (p.shape === 'rect') {
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+      } else {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+      return true;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  // Small burst — used for scroll milestones
+  function burst(count) {
+    const cx = window.innerWidth - 60;
+    const cy = window.innerHeight - 60;
+    for (let i = 0; i < count; i++) {
+      const p = createParticle(cx, cy);
+      p.vx = (Math.random() - 0.5) * 8;
+      p.vy = -Math.random() * 6 - 2;
+      particles.push(p);
+    }
+    if (!animating) animate();
+  }
+
+  // Big explosion — used for form submissions
+  function explosion(count) {
+    // Multi-point explosion across the screen
+    for (let i = 0; i < count; i++) {
+      const x = Math.random() * canvas.width;
+      const p = createParticle(x, -10);
+      p.vy = Math.random() * 2 + 1;
+      p.gravity = 0.08 + Math.random() * 0.08;
+      p.decay = 0.003 + Math.random() * 0.003;
+      particles.push(p);
+    }
+    // Also burst from the buddy corner
+    const cx = window.innerWidth - 60;
+    const cy = window.innerHeight - 60;
+    for (let i = 0; i < Math.floor(count / 3); i++) {
+      const p = createParticle(cx, cy);
+      p.vx = (Math.random() - 0.5) * 16;
+      p.vy = -Math.random() * 12 - 4;
+      particles.push(p);
+    }
+    if (!animating) animate();
+  }
+
+  window.confetti = { burst, explosion };
 }
 
 /* --- FAQ Accordion --- */
