@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merchie — Web Merchandising Intelligence for Ecommerce</title>
+  <meta name="description" content="Know your best products. Get customers to them. Merchie connects web analytics to product revenue and LTV — then generates full-funnel ad campaigns instantly.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Merchie — Know your best products. Get customers to them.">
+  <meta property="og:description" content="Web merchandising intelligence that connects web behavior to product revenue and LTV. Currently in closed beta.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://merchie.co">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>🐙</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Customer.io Tracking Snippet -->
+  <script type="text/javascript">
+    var _cio = _cio || [];
+    (function() {
+      var a,b,c;a=function(f){return function(){_cio.push([f].concat(Array.prototype.slice.call(arguments,0)))}};b=["load","identify","sidentify","track","page"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};var t = document.createElement('script'),s = document.getElementsByTagName('script')[0];t.async = true;t.id = 'cio-tracker';t.setAttribute('data-site-id', 'e73150a2c5e0e57bd68c');t.setAttribute('data-use-array-params', 'true');t.src = 'https://assets.customer.io/assets/track.js';s.parentNode.insertBefore(t, s);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Skip to main content -->
+  <a href="#main" style="position:absolute;top:-100px;left:0;background:var(--coral);color:white;padding:8px 16px;z-index:9999;font-weight:600;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to main content</a>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/" class="nav-logo" aria-label="Merchie home">
+        <!-- Friendly octopus nav icon — round head, big eyes, tiny tentacles, clear smile -->
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Rounded dome head -->
+          <path d="M32 8 C16 8, 8 20, 8 30 C8 40, 16 48, 32 48 C48 48, 56 40, 56 30 C56 20, 48 8, 32 8Z" fill="#FF6B6B"/>
+          <!-- Subtle head spots -->
+          <circle cx="22" cy="16" r="3" fill="#FF8A8A" opacity="0.5"/>
+          <circle cx="40" cy="14" r="2" fill="#FF8A8A" opacity="0.4"/>
+          <circle cx="46" cy="24" r="2.5" fill="#FF8A8A" opacity="0.3"/>
+          <!-- Big friendly eyes -->
+          <ellipse cx="23" cy="28" rx="7" ry="8" fill="white"/>
+          <ellipse cx="41" cy="28" rx="7" ry="8" fill="white"/>
+          <circle cx="25" cy="28" r="4" fill="#1B4332"/>
+          <circle cx="43" cy="28" r="4" fill="#1B4332"/>
+          <circle cx="26.5" cy="26.5" r="1.5" fill="white"/>
+          <circle cx="44.5" cy="26.5" r="1.5" fill="white"/>
+          <!-- Friendly smile -->
+          <path d="M26 38 Q32 44, 38 38" stroke="#E85555" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Cute tiny tentacles -->
+          <path d="M14 46 Q10 54, 14 58" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M22 48 Q18 56, 22 60" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M32 49 Q32 58, 32 61" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M42 48 Q46 56, 42 60" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M50 46 Q54 54, 50 58" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+        merchie
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+        <span class="beta-badge-nav">Closed Beta</span>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#faq">FAQ</a>
+    <span class="beta-badge" style="margin-top: 1rem;">Closed Beta</span>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <main id="main">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="beta-badge-wrapper">
+            <span class="beta-badge">Currently in Closed Beta</span>
+          </div>
+          <h1>Know your best products. <span class="highlight">Get customers to them.</span></h1>
+          <p class="hero-sub">Your products are the biggest driver of growth and lifetime value — not your ads, not your brand marketing. Merchie finds the products that matter most and gets them in front of the right people. Instantly.</p>
+
+          <!-- Email Capture — Step 1 -->
+          <div class="lead-capture" id="heroLeadCapture">
+            <div class="lead-step" id="heroStep1">
+              <form class="email-form" id="heroEmailForm">
+                <div class="input-group">
+                  <input type="email" id="heroEmail" placeholder="Enter your work email" required autocomplete="email">
+                  <button type="submit" class="btn btn-primary">
+                    <span>Join the Beta</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </button>
+                </div>
+                <p class="input-hint">Join the brands getting early access to product-level intelligence</p>
+              </form>
+            </div>
+
+            <!-- Step 2: Follow-up questions -->
+            <div class="lead-step hidden" id="heroStep2">
+              <form class="follow-up-form" id="heroQuestionsForm">
+                <p class="step-intro">One more thing — help us understand your business:</p>
+                <div class="form-field">
+                  <input type="text" id="heroCompany" placeholder="Company name">
+                </div>
+                <div class="form-field">
+                  <select id="heroRevenue">
+                    <option value="">Monthly revenue range</option>
+                    <option value="<$100K">Less than $100K/mo</option>
+                    <option value="$100K-$500K">$100K – $500K/mo</option>
+                    <option value="$500K-$2M">$500K – $2M/mo</option>
+                    <option value="$2M+">$2M+/mo</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <textarea id="heroChallenge" rows="2" placeholder="What's your biggest merchandising challenge?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                  <span>Complete Sign Up</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="lead-step hidden" id="heroStep3">
+              <div class="confirmation">
+                <div class="confirmation-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                </div>
+                <h3 class="confirmation-title">You're in.</h3>
+                <p class="confirmation-text">We'll be in touch soon with your beta access. Keep an eye on your inbox.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#how-it-works" class="btn btn-text" style="margin-top: var(--space-sm);">See How It Works <span class="arrow">→</span></a>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Hero Octopus — dome head with spots, flowing tentacles, organizing product cards -->
+          <svg class="octopus-svg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="body-gradient" x1="140" y1="60" x2="280" y2="240">
+                <stop offset="0%" stop-color="#FF9E9E"/>
+                <stop offset="50%" stop-color="#FF6B6B"/>
+                <stop offset="100%" stop-color="#E85555"/>
+              </linearGradient>
+              <radialGradient id="head-shine" cx="40%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="white" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="cheek-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#F4A261" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF6B6B" flood-opacity="0.15"/>
+              </filter>
+            </defs>
+
+            <g class="body-main" filter="url(#soft-shadow)">
+              <!-- Dome-shaped mantle (not a plain ellipse) -->
+              <path d="M105 180 C105 90, 150 55, 210 55 C270 55, 315 90, 315 180 C315 210, 280 235, 210 235 C140 235, 105 210, 105 180Z" fill="url(#body-gradient)"/>
+              <path d="M105 180 C105 90, 150 55, 210 55 C270 55, 315 90, 315 180 C315 210, 280 235, 210 235 C140 235, 105 210, 105 180Z" fill="url(#head-shine)"/>
+
+              <!-- Head spots/texture -->
+              <circle cx="160" cy="90" r="12" fill="#FF8A8A" opacity="0.4"/>
+              <circle cx="250" cy="85" r="8" fill="#FF8A8A" opacity="0.35"/>
+              <circle cx="200" cy="75" r="6" fill="#FF8A8A" opacity="0.3"/>
+              <circle cx="280" cy="110" r="10" fill="#FF8A8A" opacity="0.25"/>
+              <circle cx="140" cy="120" r="7" fill="#FF8A8A" opacity="0.3"/>
+              <circle cx="230" cy="100" r="5" fill="#FFA0A0" opacity="0.2"/>
+
+              <!-- Eyes with lids -->
+              <g>
+                <!-- Left eye -->
+                <ellipse cx="175" cy="155" rx="24" ry="26" fill="white"/>
+                <!-- Subtle lid -->
+                <path d="M152 148 Q175 138, 198 148" stroke="#E85555" stroke-width="2" fill="none" opacity="0.3"/>
+                <ellipse cx="179" cy="158" rx="12" ry="13" fill="#1B4332"/>
+                <circle cx="184" cy="152" r="4.5" fill="white" opacity="0.85"/>
+                <circle cx="174" cy="162" r="2" fill="white" opacity="0.4"/>
+
+                <!-- Right eye -->
+                <ellipse cx="245" cy="155" rx="24" ry="26" fill="white"/>
+                <path d="M222 148 Q245 138, 268 148" stroke="#E85555" stroke-width="2" fill="none" opacity="0.3"/>
+                <ellipse cx="241" cy="158" rx="12" ry="13" fill="#1B4332"/>
+                <circle cx="246" cy="152" r="4.5" fill="white" opacity="0.85"/>
+                <circle cx="236" cy="162" r="2" fill="white" opacity="0.4"/>
+              </g>
+
+              <!-- Wider, happier smile -->
+              <path d="M188 192 Q210 212, 232 192" stroke="#C73D75" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+              <!-- Cheek blush -->
+              <circle cx="155" cy="185" r="14" fill="url(#cheek-glow)"/>
+              <circle cx="265" cy="185" r="14" fill="url(#cheek-glow)"/>
+            </g>
+
+            <!-- Tentacles — flowing curves, varied thickness, underwater feel -->
+            <g class="tentacle-group tentacle-1">
+              <path d="M118 225 C95 260, 72 300, 55 330 C42 352, 48 368, 62 370 C76 372, 88 355, 95 332 C102 310, 108 285, 112 265" stroke="#FF6B6B" stroke-width="16" stroke-linecap="round" fill="none"/>
+              <path d="M118 225 C95 260, 72 300, 55 330 C42 352, 48 368, 62 370 C76 372, 88 355, 95 332 C102 310, 108 285, 112 265" stroke="#FF8A8A" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.35"/>
+              <circle cx="88" cy="295" r="4.5" fill="#E85555" opacity="0.25"/>
+              <circle cx="72" cy="320" r="4" fill="#E85555" opacity="0.25"/>
+              <circle cx="60" cy="345" r="3.5" fill="#E85555" opacity="0.2"/>
+            </g>
+
+            <g class="tentacle-group tentacle-2">
+              <path d="M140 235 C120 280, 105 330, 95 365 C88 390, 100 400, 115 396 C128 392, 130 372, 128 348 C126 325, 130 295, 135 270" stroke="#FF6B6B" stroke-width="15" stroke-linecap="round" fill="none"/>
+              <path d="M140 235 C120 280, 105 330, 95 365 C88 390, 100 400, 115 396 C128 392, 130 372, 128 348 C126 325, 130 295, 135 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.35"/>
+              <circle cx="115" cy="310" r="4" fill="#E85555" opacity="0.25"/>
+              <circle cx="102" cy="345" r="3.5" fill="#E85555" opacity="0.2"/>
+            </g>
+
+            <g class="tentacle-group tentacle-3">
+              <path d="M168 240 C158 290, 150 340, 150 375 C150 405, 165 410, 178 405 C188 400, 185 378, 180 352 C175 328, 172 298, 170 270" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <path d="M168 240 C158 290, 150 340, 150 375 C150 405, 165 410, 178 405 C188 400, 185 378, 180 352 C175 328, 172 298, 170 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
+            </g>
+
+            <g class="tentacle-group tentacle-4">
+              <path d="M200 245 C195 300, 192 350, 195 385 C198 408, 212 412, 222 405 C230 398, 225 375, 218 350 C212 325, 205 295, 202 270" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <path d="M200 245 C195 300, 192 350, 195 385 C198 408, 212 412, 222 405 C230 398, 225 375, 218 350 C212 325, 205 295, 202 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
+            </g>
+
+            <g class="tentacle-group tentacle-5">
+              <path d="M238 245 C240 300, 245 350, 240 385 C236 408, 248 412, 258 405 C268 398, 260 375, 252 350 C245 325, 240 295, 240 270" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <path d="M238 245 C240 300, 245 350, 240 385 C236 408, 248 412, 258 405 C268 398, 260 375, 252 350 C245 325, 240 295, 240 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
+            </g>
+
+            <g class="tentacle-group tentacle-6">
+              <path d="M268 240 C278 290, 285 340, 288 375 C290 405, 275 410, 262 405 C252 400, 255 378, 260 352 C265 328, 268 298, 268 270" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <path d="M268 240 C278 290, 285 340, 288 375 C290 405, 275 410, 262 405 C252 400, 255 378, 260 352 C265 328, 268 298, 268 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
+            </g>
+
+            <g class="tentacle-group tentacle-7">
+              <path d="M295 235 C312 280, 328 330, 338 365 C345 390, 332 400, 318 396 C305 392, 305 372, 308 348 C310 325, 302 295, 298 270" stroke="#FF6B6B" stroke-width="15" stroke-linecap="round" fill="none"/>
+              <path d="M295 235 C312 280, 328 330, 338 365 C345 390, 332 400, 318 396 C305 392, 305 372, 308 348 C310 325, 302 295, 298 270" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.35"/>
+              <circle cx="318" cy="310" r="4" fill="#E85555" opacity="0.25"/>
+              <circle cx="332" cy="345" r="3.5" fill="#E85555" opacity="0.2"/>
+            </g>
+
+            <!-- Tentacle 8: wrapping around a product card + bar chart -->
+            <g class="tentacle-group tentacle-8">
+              <path d="M310 225 C335 260, 358 300, 365 330 C370 350, 358 362, 345 358 C332 354, 328 335, 332 315" stroke="#FF6B6B" stroke-width="16" stroke-linecap="round" fill="none"/>
+              <path d="M310 225 C335 260, 358 300, 365 330 C370 350, 358 362, 345 358 C332 354, 328 335, 332 315" stroke="#FF8A8A" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.35"/>
+              <!-- Product card being organized -->
+              <g transform="translate(340, 290) rotate(8)">
+                <rect x="0" y="0" width="52" height="62" rx="6" fill="white" stroke="var(--border-medium)" stroke-width="1"/>
+                <rect x="6" y="6" width="40" height="24" rx="4" fill="#FDF8F3"/>
+                <rect x="6" y="36" width="24" height="3" rx="1.5" fill="#E0E0E0"/>
+                <rect x="6" y="43" width="16" height="3" rx="1.5" fill="#1B4332" opacity="0.3"/>
+                <!-- Hidden Gem badge -->
+                <rect x="6" y="50" width="32" height="8" rx="4" fill="rgba(27,67,50,0.1)"/>
+                <text x="10" y="57" font-size="5" font-weight="600" fill="#1B4332" font-family="Inter, sans-serif">HIDDEN GEM</text>
+              </g>
+            </g>
+
+            <!-- Mini bar chart floating near tentacle 1 -->
+            <g transform="translate(52, 280) rotate(-5)" opacity="0.9">
+              <rect x="0" y="0" width="42" height="36" rx="4" fill="white" stroke="var(--border-medium)" stroke-width="1"/>
+              <rect x="6" y="18" width="6" height="12" rx="1" fill="#FF6B6B" opacity="0.7"/>
+              <rect x="14" y="10" width="6" height="20" rx="1" fill="#1B4332" opacity="0.6"/>
+              <rect x="22" y="14" width="6" height="16" rx="1" fill="#F4A261" opacity="0.7"/>
+              <rect x="30" y="6" width="6" height="24" rx="1" fill="#1B4332" opacity="0.8"/>
+            </g>
+
+            <!-- Gold sparkle accents -->
+            <circle cx="130" cy="75" r="3" fill="#F4A261" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="290" cy="70" r="2.5" fill="#F4A261" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="320" cy="160" r="2" fill="#F4A261" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="100" cy="170" r="2" fill="#F4A261" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="social-proof">
+        <p class="social-proof-label">Built by the team behind Chubbies Shorts</p>
+        <div class="logo-bar">
+          <div class="logo-placeholder"></div>
+          <div class="logo-placeholder"></div>
+          <div class="logo-placeholder"></div>
+          <div class="logo-placeholder"></div>
+          <div class="logo-placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROBLEM ==================== -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="eyebrow">The Problem</p>
+        <h2>Everyone's obsessing over the wrong thing</h2>
+        <p>Brands pour money into ads while ignoring the biggest lever they have: getting the right products in front of the right customers. Your products drive everything — growth, LTV, all of it.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card animate-on-scroll delay-1">
+          <div class="card-icon">📉</div>
+          <h3>Your site is leaking money</h3>
+          <p>You add products, change navigation, launch features — and don't realize your site converts worse every quarter. Your best products are buried. Your worst products get all the traffic.</p>
+        </div>
+
+        <div class="problem-card animate-on-scroll delay-2">
+          <div class="card-icon">🔌</div>
+          <h3>No one connects the dots</h3>
+          <p>GA4 shows sessions. Shopify shows revenue. Nobody shows you which products drive the most new customer LTV or contribution margin at the product level. You're flying blind on what matters most.</p>
+        </div>
+
+        <div class="problem-card animate-on-scroll delay-3">
+          <div class="card-icon">⏳</div>
+          <h3>Insight to action takes months</h3>
+          <p>You find the winning product, then schedule a photo shoot, write briefs, wait for creative. By the time you launch ads, the moment's passed. That's insane.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES ==================== -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="eyebrow">The Solution</p>
+        <h2>Merchie sees what others can't</h2>
+        <p>The first platform to connect web behavior to product revenue to product-level lifetime value — then act on it instantly.</p>
+      </div>
+
+      <!-- Feature 1: Rank Alignment -->
+      <div class="feature-block animate-on-scroll">
+        <div class="feature-content">
+          <p class="eyebrow">Traffic &times; Value Intelligence</p>
+          <h3>Your products are ranked wrong. We fix that.</h3>
+          <p>Every product and collection page ranked by the traffic it gets versus the revenue it earns. Hidden Gems — high value, low traffic — surface instantly. Money Pits get flagged before they drain your budget.</p>
+          <p>We normalize on organic traffic to cut through the noise of paid campaigns and email blasts. It's the only honest signal.</p>
+        </div>
+        <div class="feature-visual animate-scale">
+          <div class="rank-visual">
+            <div class="rank-item">
+              <span class="rank-num traffic">T1</span>
+              <span class="rank-num value">V5</span>
+              <span class="rank-name">Classic Tee — Black</span>
+              <span class="rank-badge pit">Money Pit</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-num traffic">T2</span>
+              <span class="rank-num value">V2</span>
+              <span class="rank-name">Performance Hoodie</span>
+              <span class="rank-badge aligned">Aligned</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-num traffic">T3</span>
+              <span class="rank-num value">V3</span>
+              <span class="rank-name">Weekend Shorts</span>
+              <span class="rank-badge aligned">Aligned</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-num traffic">T4</span>
+              <span class="rank-num value">V1</span>
+              <span class="rank-name">Everyday Joggers</span>
+              <span class="rank-badge gem">Hidden Gem</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-num traffic">T5</span>
+              <span class="rank-num value">V4</span>
+              <span class="rank-name">Graphic Tank</span>
+              <span class="rank-badge aligned">Aligned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Product-Level LTV -->
+      <div class="feature-block reverse animate-on-scroll">
+        <div class="feature-content">
+          <p class="eyebrow">Product-Level LTV</p>
+          <h3>Which products create customers who come back?</h3>
+          <p>Not just "what sold today" — which products create customers who come back and buy again. Connected to real contribution margin, not vanity ROAS.</p>
+          <p>Filter by new customers, returning customers, or cohort. See which products are the true acquisition engines.</p>
+        </div>
+        <div class="feature-visual animate-scale">
+          <div class="ltv-visual">
+            <div class="ltv-metric-row" style="height: 160px; align-items: flex-end;">
+              <div class="ltv-bar-group">
+                <div class="ltv-bar revenue" style="height: 80px;"></div>
+                <span class="ltv-product-name">Classic Tee</span>
+              </div>
+              <div class="ltv-bar-group">
+                <div class="ltv-bar revenue" style="height: 60px;"></div>
+                <span class="ltv-product-name">Hoodie</span>
+              </div>
+              <div class="ltv-bar-group">
+                <div class="ltv-bar revenue" style="height: 130px;"></div>
+                <span class="ltv-product-name">Joggers</span>
+              </div>
+              <div class="ltv-bar-group">
+                <div class="ltv-bar revenue" style="height: 45px;"></div>
+                <span class="ltv-product-name">Tank</span>
+              </div>
+              <div class="ltv-bar-group">
+                <div class="ltv-bar revenue" style="height: 100px;"></div>
+                <span class="ltv-product-name">Shorts</span>
+              </div>
+            </div>
+            <div class="ltv-legend">
+              <div class="ltv-legend-item">
+                <span class="ltv-legend-dot" style="background: var(--coral);"></span>
+                <span>90-Day LTV per Acquisition</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADS / CAMPAIGN GENERATION ==================== -->
+  <section class="ads-section" id="ads">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="eyebrow">Full-Funnel Ad Campaigns</p>
+        <h2>From Hidden Gem to live ads. Instantly.</h2>
+        <p>Not static direct response ads. Not lame AI UGC. Not lifeless testimonial mashups. Real content that earns its space in your newsfeed.</p>
+      </div>
+
+      <div class="ads-showcase animate-on-scroll">
+        <div class="ads-showcase-grid">
+          <div class="ads-card">
+            <div class="ads-card-icon">🎯</div>
+            <h4>Discover the Gem</h4>
+            <p>Merchie identifies the products with the highest LTV that aren't getting enough traffic. These are your growth engines hiding in plain sight.</p>
+          </div>
+          <div class="ads-card">
+            <div class="ads-card-icon">✨</div>
+            <h4>Generate the Creative</h4>
+            <p>Full-suite campaign creative across the funnel — awareness hooks that earn attention, consideration content that builds desire, conversion assets that close. Every piece quality enough to share.</p>
+          </div>
+          <div class="ads-card">
+            <div class="ads-card-icon">🚀</div>
+            <h4>Launch Everywhere</h4>
+            <p>API-connected to Meta, Google, and TikTok. Campaigns go live immediately with the right audiences, the right creative, and the right products. No three-month wait for a photo shoot.</p>
+          </div>
+        </div>
+
+        <div class="ads-bottom-line animate-on-scroll">
+          <p class="ads-cred">Built by the team that made <strong>Chubbies</strong> a content juggernaut. We know what great content looks like because we've done it — at scale, for a decade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="eyebrow">How It Works</p>
+        <h2>Three steps. Real clarity.</h2>
+        <p>No six-month onboarding. No "we need to schedule a data integration call." Connect and see results immediately.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card animate-on-scroll delay-1">
+          <div class="step-number">1</div>
+          <h3>Connect</h3>
+          <p>Link your analytics and Shopify in two minutes. Merchie normalizes your data using organic traffic as the source of truth — cutting through the noise of paid and email spikes.</p>
+        </div>
+
+        <div class="step-card animate-on-scroll delay-2">
+          <div class="step-number">2</div>
+          <h3>Discover</h3>
+          <p>See your Hidden Gems and Money Pits instantly. Every product and collection ranked by traffic versus value. A prioritized action list tells you exactly what to do first.</p>
+        </div>
+
+        <div class="step-card animate-on-scroll delay-3">
+          <div class="step-number">3</div>
+          <h3>Act</h3>
+          <p>Reorder collections, update your homepage hero, launch full-funnel ad campaigns for your best products — all informed by real product-level revenue and LTV data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RESULTS / SOCIAL PROOF ==================== -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="results-intro animate-on-scroll">
+        <p class="eyebrow">Track Record</p>
+        <h2>Built by the team behind Chubbies</h2>
+        <p>We've spent a decade building and scaling DTC brands. We know what great ecommerce looks like — because we built one.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card animate-on-scroll delay-1">
+          <div class="stat-number" data-count="500" data-suffix="M+" data-prefix="$">0</div>
+          <div class="stat-label">DTC revenue influenced</div>
+        </div>
+        <div class="stat-card animate-on-scroll delay-2">
+          <div class="stat-number" data-count="10000" data-suffix="+">0</div>
+          <div class="stat-label">Products optimized</div>
+        </div>
+        <div class="stat-card animate-on-scroll delay-3">
+          <div class="stat-number" data-count="28" data-suffix="%" data-prefix="+">0</div>
+          <div class="stat-label">Avg. organic traffic lift</div>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll delay-1">
+          <p class="testimonial-quote">"We had no idea our highest-converting product was getting almost no traffic. Merchie found it in the first five minutes. Revenue per session is up across the board."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JM</div>
+            <div>
+              <div class="testimonial-name">John M.</div>
+              <div class="testimonial-role">Head of Ecommerce</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll delay-2">
+          <p class="testimonial-quote">"The connection between web behavior and product-level LTV is something we've never had before. It completely changed how we think about merchandising and ad spend."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div>
+              <div class="testimonial-name">Sarah K.</div>
+              <div class="testimonial-role">VP of Growth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OCTOPUS BRAND SECTION ==================== -->
+  <section class="octopus-section" id="capabilities">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Eight arms. Every angle covered.</h2>
+        <p>Merchie wraps around your entire ecommerce operation — every tentacle working a different angle, all coordinated by a very smart brain.</p>
+      </div>
+
+      <div class="capabilities-grid">
+        <div class="capability-card animate-on-scroll delay-1">
+          <div class="capability-icon">📊</div>
+          <h4>Web Analytics</h4>
+          <p>Organic-normalized traffic intelligence</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-2">
+          <div class="capability-icon">💰</div>
+          <h4>Product Revenue</h4>
+          <p>Real revenue per session, per product</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-3">
+          <div class="capability-icon">🔄</div>
+          <h4>Customer LTV</h4>
+          <p>Cohort lifetime value at the product level</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-4">
+          <div class="capability-icon">🏬</div>
+          <h4>Collection Optimization</h4>
+          <p>Automated sorting by value rank</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-1">
+          <div class="capability-icon">🧭</div>
+          <h4>Navigation Intelligence</h4>
+          <p>Guide traffic to your highest-value pages</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-2">
+          <div class="capability-icon">🎨</div>
+          <h4>AI Ad Creation</h4>
+          <p>Full-funnel campaigns that earn engagement</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-3">
+          <div class="capability-icon">✍️</div>
+          <h4>Content Generation</h4>
+          <p>Real creative people actually want to see</p>
+        </div>
+        <div class="capability-card animate-on-scroll delay-4">
+          <div class="capability-icon">📈</div>
+          <h4>Performance Monitoring</h4>
+          <p>Daily alerts when something shifts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions? We've got answers.</h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-question" aria-expanded="false">
+            How is this different from Google Analytics?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">GA4 tells you what happened — sessions, pageviews, events. Merchie tells you what to do about it. We connect web behavior to actual product revenue, contribution margin, and lifetime value at the product level. Then we rank every product and collection by traffic versus value, so you know exactly which products are Hidden Gems and which are Money Pits. GA4 doesn't do any of that.</div>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-question" aria-expanded="false">
+            What about the ad campaigns? How does that work?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">When Merchie identifies a Hidden Gem product, it can generate a full suite of ad creative — awareness hooks, consideration content, conversion assets — using generative AI tuned by a decade of DTC creative expertise. These campaigns are API-connected to Meta, Google, and TikTok, so they can go live immediately. No photo shoot scheduling, no brief writing, no three-month wait. Insight to live ads, instantly.</div>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-question" aria-expanded="false">
+            What platforms does Merchie work with?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Merchie connects to Shopify and your analytics platform (GA4, BigQuery, etc.) in minutes. We're built for DTC ecommerce brands on Shopify doing $5M+ in annual revenue, with more platform support coming soon.</div>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-question" aria-expanded="false">
+            What do you mean by "organic traffic as source of truth"?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Paid traffic converts differently depending on campaign type. Email traffic spikes on launch days. These sources create noise that makes your data unreliable. Organic traffic is a stable, honest baseline — the way your site performed last week is similar to how it'll perform this week. By normalizing on organic, Merchie gives you the clearest picture of your actual product and page performance.</div>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-question" aria-expanded="false">
+            Who built this?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Merchie is built by the team behind Marathon Data Co. and Chubbies Shorts. We've spent a decade in the trenches of DTC ecommerce — building brands, scaling revenue, creating content people actually want to see. We built Merchie because we needed it ourselves.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="animate-on-scroll">
+        <span class="beta-badge" style="margin-bottom: var(--space-md); display: inline-block;">Closed Beta</span>
+        <h2>Stop guessing. Start merching.</h2>
+        <p>Join the brands that know exactly which products to push — and how to push them.</p>
+
+        <!-- Email capture (footer instance) -->
+        <div class="lead-capture lead-capture-footer" id="footerLeadCapture">
+          <div class="lead-step" id="footerStep1">
+            <form class="email-form" id="footerEmailForm">
+              <div class="input-group input-group-dark">
+                <input type="email" id="footerEmail" placeholder="Enter your work email" required autocomplete="email">
+                <button type="submit" class="btn btn-primary">
+                  <span>Join the Beta</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="lead-step hidden" id="footerStep2">
+            <div class="confirmation">
+              <div class="confirmation-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </div>
+              <h3 class="confirmation-title">You're in.</h3>
+              <p class="confirmation-text">We'll be in touch soon with your beta access.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <!-- Simplified friendly octopus for footer -->
+            <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M32 8 C16 8, 8 20, 8 30 C8 40, 16 48, 32 48 C48 48, 56 40, 56 30 C56 20, 48 8, 32 8Z" fill="#FF6B6B"/>
+              <ellipse cx="23" cy="28" rx="7" ry="8" fill="white"/>
+              <ellipse cx="41" cy="28" rx="7" ry="8" fill="white"/>
+              <circle cx="25" cy="28" r="4" fill="#1B4332"/>
+              <circle cx="43" cy="28" r="4" fill="#1B4332"/>
+              <circle cx="26.5" cy="26.5" r="1.5" fill="white"/>
+              <circle cx="44.5" cy="26.5" r="1.5" fill="white"/>
+              <path d="M26 38 Q32 44, 38 38" stroke="#E85555" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path d="M14 46 Q10 54, 14 58" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M22 48 Q18 56, 22 60" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M32 49 Q32 58, 32 61" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M42 48 Q46 56, 42 60" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M50 46 Q54 54, 50 58" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </svg>
+            merchie
+          </div>
+          <p>Web merchandising intelligence for ecommerce brands that want to stop guessing and start growing. A Marathon Data Co. product.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#ads">Ad Campaigns</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Twitter / X</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Merchie. All rights reserved.</span>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
