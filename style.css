@@ -263,7 +263,31 @@ section {
   transition: transform 0.3s ease;
 }
 
-.nav-logo:hover svg,
+/* Persistent happy wave animation on nav mochi */
+.nav-mochi {
+  animation: navMochiWave 2.5s ease-in-out infinite;
+}
+
+.nav-mochi .nav-arm-r {
+  animation: navArmWave 1.8s ease-in-out infinite;
+  transform-origin: 52px 36px;
+}
+
+@keyframes navMochiWave {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-2px) rotate(-3deg) scale(1.02); }
+  50% { transform: translateY(-3px) rotate(2deg) scale(1.04); }
+  75% { transform: translateY(-1px) rotate(-1deg) scale(1.01); }
+}
+
+@keyframes navArmWave {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-25deg); }
+  60% { transform: rotate(-5deg); }
+  80% { transform: rotate(-20deg); }
+}
+
+.nav-logo:hover .nav-mochi,
 .nav-mochi.dancing {
   animation: navMochiDance 0.6s ease;
 }
@@ -2155,6 +2179,57 @@ section {
   0%, 100% { transform: rotate(0deg) translateY(0); }
   30% { transform: rotate(6deg) translateY(-4px); }
   60% { transform: rotate(2deg) translateY(-1px); }
+}
+
+/* Hero mochi persistent wave — right arm waves hello */
+.mochi-svg .mochi-arm-r {
+  animation: armWaveR 3.8s ease-in-out infinite 0.5s, heroArmWaveHello 2s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+@keyframes heroArmWaveHello {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  20% { transform: rotate(12deg) translateY(-6px); }
+  40% { transform: rotate(4deg) translateY(-2px); }
+  60% { transform: rotate(10deg) translateY(-5px); }
+  80% { transform: rotate(2deg) translateY(-1px); }
+}
+
+/* Hero mochi greeting bubble */
+.hero-mochi-bubble {
+  position: absolute;
+  top: 30px;
+  right: -10px;
+  background: white;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--charcoal);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  animation: heroMochiBubbleIn 0.5s ease forwards 1.5s;
+}
+
+.hero-mochi-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 30px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes heroMochiBubbleIn {
+  0% { opacity: 0; transform: translateY(8px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Mochi hover shimmer */

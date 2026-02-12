@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyCTA();
   initNavMochiDance();
   initActivityStatus();
+  initHeroMochiBubble();
   initFunFacts();
   initKonamiCode();
 });
@@ -1100,6 +1101,45 @@ function initTextReveal() {
     });
   });
 })();
+
+/* --- Hero Mochi Greeting Bubble --- */
+function initHeroMochiBubble() {
+  const bubble = document.getElementById('heroMochiBubble');
+  if (!bubble) return;
+
+  const messages = [
+    "Hi! Welcome to Merchie",
+    "We're the Merchie family!",
+    "Let me show you around"
+  ];
+  let msgIndex = 0;
+
+  // First message shows via CSS animation at 1.5s
+  // Cycle messages, then fade out
+  function nextMessage() {
+    msgIndex++;
+    if (msgIndex < messages.length) {
+      bubble.style.opacity = '0';
+      bubble.style.transform = 'translateY(4px) scale(0.95)';
+      setTimeout(() => {
+        bubble.textContent = messages[msgIndex];
+        bubble.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        bubble.style.opacity = '1';
+        bubble.style.transform = 'translateY(0) scale(1)';
+      }, 400);
+      setTimeout(nextMessage, 3500);
+    } else {
+      // Fade out after last message
+      setTimeout(() => {
+        bubble.style.transition = 'opacity 0.6s ease';
+        bubble.style.opacity = '0';
+      }, 2500);
+    }
+  }
+
+  // Start cycling after first message has been visible
+  setTimeout(nextMessage, 4500);
+}
 
 /* --- Fun Facts (appear after 2s hover) --- */
 function initFunFacts() {
