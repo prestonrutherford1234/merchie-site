@@ -254,6 +254,37 @@ function initSignupForms() {
     });
   }
 
+  // --- Mid-page form ---
+  const midEmailForm = document.getElementById('midEmailForm');
+  if (midEmailForm) {
+    midEmailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('midEmail').value.trim();
+      if (!email) return;
+
+      identifyInCIO({ email });
+
+      // Fill hero email and advance to step 2
+      const heroEmail = document.getElementById('heroEmail');
+      if (heroEmail) heroEmail.value = email;
+      transitionStep('heroStep1', 'heroStep2');
+
+      // Scroll to hero form for step 2
+      const heroCapture = document.getElementById('heroLeadCapture');
+      if (heroCapture) {
+        heroCapture.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (window.octoBuddy) {
+        window.octoBuddy.setMood('happy');
+        window.octoBuddy.say("Nice! Tell me more up top!");
+        window.octoBuddy.emitParticles(['✨', '⭐', '💫'], 5);
+      }
+      if (window.confetti) window.confetti.burst(30);
+      if (window.navMochiDance) window.navMochiDance();
+    });
+  }
+
   // --- Mochi celebration on form completion ---
   function triggerMochiCelebration() {
     const buddy = document.getElementById('octoBuddy');
@@ -989,6 +1020,20 @@ function initTextReveal() {
     observer.observe(counter);
   });
 }
+
+/* --- Mobile Input Focus Fix --- */
+(function fixMobileInputFocus() {
+  if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
+
+  document.querySelectorAll('input[type="email"], input[type="text"], textarea, select').forEach(input => {
+    input.addEventListener('focus', () => {
+      // Delay to let keyboard open, then scroll input into view
+      setTimeout(() => {
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    });
+  });
+})();
 
 /* --- Nav Mochi Dance --- */
 function initNavMochiDance() {

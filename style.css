@@ -1615,6 +1615,33 @@ section {
   margin-right: auto;
 }
 
+/* --- Mid-Page CTA --- */
+.mid-cta {
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(135deg, var(--coral-glow) 0%, rgba(244, 162, 97, 0.08) 100%);
+}
+
+.mid-cta-inner {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.mid-cta-inner h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.mid-cta-inner p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.mid-cta-capture {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 /* --- Final CTA --- */
 .final-cta {
   background: var(--forest-dark);
@@ -2250,6 +2277,10 @@ section {
   :root {
     --space-4xl: 5rem;
     --space-3xl: 3.5rem;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--nav-height) + 20px);
   }
 
   h1 { font-size: 2.25rem; }
