@@ -413,7 +413,7 @@ function initOctoBuddy() {
     ads: ["Watch me work!", "From insight to ad — instantly.", "No more waiting for photoshoots."],
     'how-it-works': ["It's really that simple.", "Three steps. That's it.", "Connect and go."],
     results: ["Not bad, right?", "A decade of DTC experience.", "We've seen it all."],
-    capabilities: ["Meet the family!", "We're all online 24/7!", "Six agents, one family!"],
+    capabilities: ["Meet the team!", "We're all online 24/7!", "Six agents, one brain!"],
     faq: ["Great question!", "Ask away!", "Glad you're curious."]
   };
   let lastSection = null;
@@ -471,7 +471,7 @@ function initOctoBuddy() {
       buddy.classList.add('visible');
       if (!hasShownGreeting) {
         hasShownGreeting = true;
-        setTimeout(() => say("Hey! I'm Momo, head of the family 👋"), 500);
+        setTimeout(() => say("Hey! I'm Momo, team captain 👋"), 500);
         startEmailNudge();
       }
     } else if (scrollY <= showThreshold && isVisible) {
@@ -1109,7 +1109,7 @@ function initHeroMochiBubble() {
 
   const messages = [
     "Hi! Welcome to Merchie",
-    "We're the Merchie family!",
+    "We're the Merchie team!",
     "Let me show you around"
   ];
   let msgIndex = 0;
@@ -1191,7 +1191,7 @@ function initKonamiCode() {
     // Buddy says something
     if (window.octoBuddy) {
       window.octoBuddy.setMood('ecstatic');
-      window.octoBuddy.say("You found the secret! The family approves!");
+      window.octoBuddy.say("You found the secret! The team approves!");
       window.octoBuddy.emitParticles(['🎉', '🎊', '✨', '💖', '🌟', '🍡'], 20);
     }
 
