@@ -1545,6 +1545,55 @@ section {
 
 .card-mochi svg {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  animation: mochiBob var(--bob-duration, 3s) ease-in-out infinite;
+  animation-delay: var(--bob-delay, 0s);
+  transform-origin: center bottom;
+  transition: filter 0.3s ease;
+}
+
+/* Stagger each card so they bob independently */
+.trading-card:nth-child(1) .card-mochi svg { --bob-duration: 2.8s; --bob-delay: 0s; }
+.trading-card:nth-child(2) .card-mochi svg { --bob-duration: 3.2s; --bob-delay: 0.4s; }
+.trading-card:nth-child(3) .card-mochi svg { --bob-duration: 2.6s; --bob-delay: 0.8s; }
+.trading-card:nth-child(4) .card-mochi svg { --bob-duration: 3.4s; --bob-delay: 0.2s; }
+.trading-card:nth-child(5) .card-mochi svg { --bob-duration: 2.9s; --bob-delay: 0.6s; }
+.trading-card:nth-child(6) .card-mochi svg { --bob-duration: 3.1s; --bob-delay: 1.0s; }
+
+@keyframes mochiBob {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-4px) rotate(-2deg) scale(1.02); }
+  50% { transform: translateY(-6px) rotate(0deg) scale(1); }
+  75% { transform: translateY(-3px) rotate(2deg) scale(1.01); }
+}
+
+/* Hover: tickle mode! */
+.trading-card:hover .card-mochi svg {
+  animation: mochiTickle 0.4s ease-in-out infinite;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes mochiTickle {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  10% { transform: translateY(-3px) rotate(-6deg) scale(1.08); }
+  20% { transform: translateY(1px) rotate(5deg) scale(0.95); }
+  30% { transform: translateY(-5px) rotate(-4deg) scale(1.1); }
+  40% { transform: translateY(2px) rotate(6deg) scale(0.97); }
+  50% { transform: translateY(-4px) rotate(-3deg) scale(1.06); }
+  60% { transform: translateY(1px) rotate(5deg) scale(0.98); }
+  70% { transform: translateY(-3px) rotate(-5deg) scale(1.05); }
+  80% { transform: translateY(2px) rotate(4deg) scale(0.97); }
+  90% { transform: translateY(-2px) rotate(-2deg) scale(1.03); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+/* Only animate when in view (reduced motion or not yet scrolled) */
+@media (prefers-reduced-motion: reduce) {
+  .card-mochi svg {
+    animation: none !important;
+  }
+  .trading-card:hover .card-mochi svg {
+    animation: none !important;
+  }
 }
 
 .card-name {
