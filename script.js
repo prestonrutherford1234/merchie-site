@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTextReveal();
   initVirtuousCycle();
   initStickyCTA();
+  initNavMochiDance();
 });
 
 /* --- Navigation Scroll Effect --- */
@@ -377,7 +378,7 @@ function initOctoBuddy() {
     ads: ["Watch me work!", "From insight to ad — instantly.", "No more waiting for photoshoots."],
     'how-it-works': ["It's really that simple.", "Three steps. That's it.", "Connect and go."],
     results: ["Not bad, right?", "A decade of DTC experience.", "We've seen it all."],
-    capabilities: ["One mochi, infinite power!", "I cover everything.", "Squishy but mighty."],
+    capabilities: ["Meet my squad!", "We're all online 24/7!", "Six agents, one team!"],
     faq: ["Great question!", "Ask away!", "Glad you're curious."]
   };
   let lastSection = null;
@@ -435,7 +436,7 @@ function initOctoBuddy() {
       buddy.classList.add('visible');
       if (!hasShownGreeting) {
         hasShownGreeting = true;
-        setTimeout(() => say("Hey! I'm Merchie 👋"), 500);
+        setTimeout(() => say("Hey! I'm Momo, team captain 👋"), 500);
         startEmailNudge();
       }
     } else if (scrollY <= showThreshold && isVisible) {
@@ -987,4 +988,50 @@ function initTextReveal() {
 
     observer.observe(counter);
   });
+}
+
+/* --- Nav Mochi Dance --- */
+function initNavMochiDance() {
+  const navMochi = document.querySelector('.nav-mochi');
+  if (!navMochi) return;
+
+  function triggerDance() {
+    navMochi.classList.remove('dancing');
+    void navMochi.offsetWidth; // force reflow to restart animation
+    navMochi.classList.add('dancing');
+    setTimeout(() => navMochi.classList.remove('dancing'), 600);
+  }
+
+  // Dance on form submissions
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      setTimeout(triggerDance, 100);
+    });
+  });
+
+  // Dance on scroll milestones (25%, 50%, 75%, 100%)
+  const danced = {};
+  window.addEventListener('scroll', () => {
+    const pct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    [25, 50, 75, 100].forEach(m => {
+      if (pct >= m && !danced[m]) {
+        danced[m] = true;
+        triggerDance();
+      }
+    });
+  });
+
+  // Dance when buddy is clicked
+  const buddy = document.getElementById('octoBuddy');
+  if (buddy) {
+    buddy.addEventListener('click', triggerDance);
+  }
+
+  // Dance on FAQ open
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => setTimeout(triggerDance, 200));
+  });
+
+  // Expose globally for other triggers
+  window.navMochiDance = triggerDance;
 }
