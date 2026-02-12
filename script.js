@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initVirtuousCycle();
   initStickyCTA();
   initNavMochiDance();
+  initActivityStatus();
+  initFunFacts();
+  initKonamiCode();
 });
 
 /* --- Navigation Scroll Effect --- */
@@ -409,7 +412,7 @@ function initOctoBuddy() {
     ads: ["Watch me work!", "From insight to ad — instantly.", "No more waiting for photoshoots."],
     'how-it-works': ["It's really that simple.", "Three steps. That's it.", "Connect and go."],
     results: ["Not bad, right?", "A decade of DTC experience.", "We've seen it all."],
-    capabilities: ["Meet my squad!", "We're all online 24/7!", "Six agents, one team!"],
+    capabilities: ["Meet the family!", "We're all online 24/7!", "Six agents, one family!"],
     faq: ["Great question!", "Ask away!", "Glad you're curious."]
   };
   let lastSection = null;
@@ -467,7 +470,7 @@ function initOctoBuddy() {
       buddy.classList.add('visible');
       if (!hasShownGreeting) {
         hasShownGreeting = true;
-        setTimeout(() => say("Hey! I'm Momo, team captain 👋"), 500);
+        setTimeout(() => say("Hey! I'm Momo, head of the family 👋"), 500);
         startEmailNudge();
       }
     } else if (scrollY <= showThreshold && isVisible) {
@@ -602,6 +605,43 @@ function initOctoBuddy() {
     setMood(reaction.mood);
     say(reaction.msg);
     emitParticles(reaction.emojis, 4);
+  });
+
+  // Progressive dance level tracking
+  let interactionScore = 0;
+  let currentDanceLevel = 0;
+
+  function updateDanceLevel() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    const scrollScore = Math.floor(scrollPercent / 25);
+
+    const newLevel = Math.min(3, scrollScore + Math.floor(interactionScore / 3));
+
+    if (newLevel !== currentDanceLevel) {
+      currentDanceLevel = newLevel;
+      buddy.classList.remove('dance-level-1', 'dance-level-2', 'dance-level-3');
+      if (newLevel > 0) {
+        buddy.classList.add('dance-level-' + newLevel);
+      }
+    }
+  }
+
+  // Count clicks as interaction
+  buddy.addEventListener('click', () => {
+    interactionScore++;
+    updateDanceLevel();
+  });
+
+  // Update on scroll (piggybacks on existing scroll handler)
+  const origUpdateOnScroll = updateOnScroll;
+  function enhancedUpdateOnScroll() {
+    origUpdateOnScroll();
+    updateDanceLevel();
+  }
+  // Replace the reference — we re-hook the scroll handler
+  window.addEventListener('scroll', () => {
+    updateDanceLevel();
   });
 
   // Expose API for form celebrations
@@ -1021,6 +1061,32 @@ function initTextReveal() {
   });
 }
 
+/* --- Mobile Touch-to-Dance --- */
+(function initTouchDance() {
+  if (!('ontouchstart' in window)) return;
+
+  document.querySelectorAll('.trading-card').forEach(card => {
+    card.addEventListener('touchstart', (e) => {
+      // Toggle dancing
+      if (card.classList.contains('touch-dancing')) {
+        card.classList.remove('touch-dancing');
+        card.classList.remove('show-fun-fact');
+      } else {
+        card.classList.add('touch-dancing');
+        // Show fun fact after dance
+        setTimeout(() => {
+          card.classList.add('show-fun-fact');
+        }, 1500);
+        // Auto-remove after animation
+        setTimeout(() => {
+          card.classList.remove('touch-dancing');
+          card.classList.remove('show-fun-fact');
+        }, 4000);
+      }
+    }, { passive: true });
+  });
+})();
+
 /* --- Mobile Input Focus Fix --- */
 (function fixMobileInputFocus() {
   if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
@@ -1034,6 +1100,162 @@ function initTextReveal() {
     });
   });
 })();
+
+/* --- Fun Facts (appear after 2s hover) --- */
+function initFunFacts() {
+  const cards = document.querySelectorAll('.trading-card');
+  cards.forEach(card => {
+    let hoverTimer = null;
+    card.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => {
+        card.classList.add('show-fun-fact');
+      }, 2000);
+    });
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      card.classList.remove('show-fun-fact');
+    });
+  });
+}
+
+/* --- Konami Code Easter Egg --- */
+function initKonamiCode() {
+  const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+  let position = 0;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === code[position]) {
+      position++;
+      if (position === code.length) {
+        position = 0;
+        triggerKonamiEasterEgg();
+      }
+    } else {
+      position = 0;
+    }
+  });
+
+  function triggerKonamiEasterEgg() {
+    // All mochis do synchronized dance
+    const cards = document.querySelectorAll('.trading-card .card-mochi svg');
+    cards.forEach(svg => {
+      svg.style.animation = 'mochiGroove 4s ease-in-out 1';
+      setTimeout(() => {
+        svg.style.animation = '';
+      }, 4000);
+    });
+
+    // Big confetti explosion
+    if (window.confetti) window.confetti.explosion(200);
+
+    // Buddy says something
+    if (window.octoBuddy) {
+      window.octoBuddy.setMood('ecstatic');
+      window.octoBuddy.say("You found the secret! The family approves!");
+      window.octoBuddy.emitParticles(['🎉', '🎊', '✨', '💖', '🌟', '🍡'], 20);
+    }
+
+    // Second wave
+    setTimeout(() => {
+      if (window.confetti) window.confetti.explosion(100);
+      if (window.octoBuddy) {
+        window.octoBuddy.emitParticles(['🎉', '💝', '🎊'], 10);
+      }
+    }, 1000);
+  }
+}
+
+/* --- Live Activity Status Cycling --- */
+function initActivityStatus() {
+  const activities = {
+    momo: [
+      "Reordering collection #47...",
+      "Found 3 Hidden Gems today",
+      "Analyzing page 2,847 this hour",
+      "Moving a bestseller to position #1",
+      "Shopping your site right now",
+      "Checking collection sort order",
+      "Ranking 1,204 products by LTV",
+      "Swapping positions on homepage"
+    ],
+    max: [
+      "Running A/B test #12...",
+      "Improved checkout flow +18%",
+      "Optimizing landing page #89",
+      "Testing new CTA placement",
+      "Analyzing funnel drop-off",
+      "Conv rate up 2.3% this week",
+      "Heat mapping product pages",
+      "Split-testing hero layouts"
+    ],
+    mila: [
+      "Launched 5 campaigns today",
+      "Shifting budget to top performer",
+      "New audience segment discovered",
+      "ROAS up 2.1x on latest campaign",
+      "Scaling winning creative",
+      "Pausing underperformers",
+      "Launching retargeting sequence",
+      "Budget optimized across 3 channels"
+    ],
+    maple: [
+      "Crunched 847K data points today",
+      "Spotted a trend in activewear",
+      "Building cohort model #34",
+      "Found a hidden LTV pattern",
+      "Analyzing customer segments",
+      "Correlating traffic to revenue",
+      "Processing product analytics",
+      "New insight: repeat purchase spike"
+    ],
+    mars: [
+      "Concepting campaign #203...",
+      "Designing hooks for a new brand",
+      "Storyboarding full-funnel sequence",
+      "Brainstorming scroll-stoppers",
+      "Creative brief drafted",
+      "Mapping awareness → conversion",
+      "New angle: lifestyle + product",
+      "Ideating 12 hook variations"
+    ],
+    mika: [
+      "Rendered 14 assets this hour",
+      "Cutting a lifestyle reel",
+      "Adapting creative for 3 formats",
+      "Same-day turnaround #2,847",
+      "Exporting for Meta + TikTok",
+      "Resizing for Stories format",
+      "Batch rendering product shots",
+      "Video edit done in 4 minutes"
+    ]
+  };
+
+  const statusEls = document.querySelectorAll('.card-status');
+  if (!statusEls.length) return;
+
+  // Initialize each with a random activity
+  statusEls.forEach(el => {
+    const agent = el.dataset.agent;
+    const pool = activities[agent];
+    if (!pool) return;
+    el.textContent = pool[Math.floor(Math.random() * pool.length)];
+  });
+
+  // Cycle every 4s with fade transition
+  setInterval(() => {
+    statusEls.forEach(el => {
+      const agent = el.dataset.agent;
+      const pool = activities[agent];
+      if (!pool) return;
+
+      el.classList.add('fading');
+      setTimeout(() => {
+        el.textContent = pool[Math.floor(Math.random() * pool.length)];
+        el.classList.remove('fading');
+      }, 400);
+    });
+  }, 4000);
+}
 
 /* --- Nav Mochi Dance --- */
 function initNavMochiDance() {

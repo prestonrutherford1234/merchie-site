@@ -1448,7 +1448,7 @@ section {
 }
 
 /* --- Octopus Brand Section --- */
-/* --- Merchi Squad Section --- */
+/* --- Merchi Family Section --- */
 .merchi-squad {
   background: var(--forest);
   color: var(--white);
@@ -1566,21 +1566,127 @@ section {
   75% { transform: translateY(-3px) rotate(2deg) scale(1.01); }
 }
 
-/* Hover: smooth groovy dance */
+/* Idle arm sway — gentle wave on each arm */
+.card-mochi .mochi-arm-l {
+  animation: mochiArmL 3.5s ease-in-out infinite;
+  transform-origin: 12px 36px;
+}
+.card-mochi .mochi-arm-r {
+  animation: mochiArmR 3.8s ease-in-out infinite 0.5s;
+  transform-origin: 52px 36px;
+}
+
+@keyframes mochiArmL {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-4deg); }
+  60% { transform: rotate(2deg); }
+}
+
+@keyframes mochiArmR {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(4deg); }
+  60% { transform: rotate(-2deg); }
+}
+
+/* Hover: 30s MJ groove dance — multi-phase choreography */
 .trading-card:hover .card-mochi svg {
-  animation: mochiDance 1.2s ease-in-out infinite;
+  animation: mochiGroove 30s ease-in-out infinite;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 }
 
-@keyframes mochiDance {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  15% { transform: translateY(-8px) rotate(-4deg) scale(1.04); }
-  30% { transform: translateY(-2px) rotate(3deg) scale(1); }
-  45% { transform: translateY(-10px) rotate(-3deg) scale(1.05); }
-  60% { transform: translateY(-3px) rotate(4deg) scale(1.01); }
-  75% { transform: translateY(-7px) rotate(-2deg) scale(1.03); }
-  90% { transform: translateY(-1px) rotate(2deg) scale(1); }
+/* Hover arm dance — more energetic */
+.trading-card:hover .card-mochi .mochi-arm-l {
+  animation: mochiArmDanceL 1.5s ease-in-out infinite;
 }
+.trading-card:hover .card-mochi .mochi-arm-r {
+  animation: mochiArmDanceR 1.5s ease-in-out infinite 0.2s;
+}
+
+@keyframes mochiArmDanceL {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-8deg); }
+}
+
+@keyframes mochiArmDanceR {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(8deg); }
+}
+
+/* 30s multi-phase groove: sway → bounce → spin → moonwalk → celebration */
+@keyframes mochiGroove {
+  /* Phase 1: Gentle side-to-side sway (0-25%) */
+  0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+  2% { transform: translateY(-4px) translateX(-3px) rotate(-3deg) scale(1.01); }
+  4% { transform: translateY(-2px) translateX(3px) rotate(3deg) scale(1); }
+  6% { transform: translateY(-5px) translateX(-4px) rotate(-4deg) scale(1.02); }
+  8% { transform: translateY(-1px) translateX(2px) rotate(2deg) scale(1); }
+  10% { transform: translateY(-6px) translateX(-2px) rotate(-3deg) scale(1.01); }
+  12% { transform: translateY(-2px) translateX(4px) rotate(4deg) scale(1); }
+  14% { transform: translateY(-4px) translateX(-3px) rotate(-2deg) scale(1.02); }
+  16% { transform: translateY(-1px) translateX(2px) rotate(3deg) scale(1); }
+  18% { transform: translateY(-5px) translateX(-4px) rotate(-4deg) scale(1.01); }
+  20% { transform: translateY(-2px) translateX(3px) rotate(2deg) scale(1); }
+  22% { transform: translateY(-4px) translateX(-2px) rotate(-3deg) scale(1.02); }
+  24% { transform: translateY(-1px) translateX(1px) rotate(1deg) scale(1); }
+
+  /* Phase 2: Bouncy groove (25-50%) — adding vertical bounce + squish */
+  25% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+  27% { transform: translateY(-12px) translateX(-3px) rotate(-5deg) scaleX(0.96) scaleY(1.06); }
+  29% { transform: translateY(2px) translateX(2px) rotate(3deg) scaleX(1.04) scaleY(0.96); }
+  31% { transform: translateY(-14px) translateX(-4px) rotate(-4deg) scaleX(0.95) scaleY(1.07); }
+  33% { transform: translateY(3px) translateX(3px) rotate(5deg) scaleX(1.05) scaleY(0.95); }
+  35% { transform: translateY(-10px) translateX(-2px) rotate(-3deg) scaleX(0.97) scaleY(1.04); }
+  37% { transform: translateY(1px) translateX(4px) rotate(4deg) scaleX(1.03) scaleY(0.97); }
+  39% { transform: translateY(-13px) translateX(-3px) rotate(-5deg) scaleX(0.96) scaleY(1.06); }
+  41% { transform: translateY(2px) translateX(2px) rotate(3deg) scaleX(1.04) scaleY(0.96); }
+  43% { transform: translateY(-11px) translateX(-4px) rotate(-4deg) scaleX(0.97) scaleY(1.05); }
+  45% { transform: translateY(1px) translateX(3px) rotate(4deg) scaleX(1.03) scaleY(0.97); }
+  47% { transform: translateY(-12px) translateX(-2px) rotate(-3deg) scaleX(0.96) scaleY(1.05); }
+  49% { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
+
+  /* Phase 3: Spin move (50-75%) — smooth 360 rotation + scale pulse */
+  50% { transform: translateY(0) rotate(0deg) scale(1); }
+  52% { transform: translateY(-6px) rotate(36deg) scale(1.05); }
+  54% { transform: translateY(-10px) rotate(72deg) scale(1.08); }
+  56% { transform: translateY(-8px) rotate(108deg) scale(1.1); }
+  58% { transform: translateY(-12px) rotate(144deg) scale(1.08); }
+  60% { transform: translateY(-6px) rotate(180deg) scale(1.05); }
+  62% { transform: translateY(-10px) rotate(216deg) scale(1.08); }
+  64% { transform: translateY(-8px) rotate(252deg) scale(1.1); }
+  66% { transform: translateY(-12px) rotate(288deg) scale(1.08); }
+  68% { transform: translateY(-6px) rotate(324deg) scale(1.05); }
+  70% { transform: translateY(-2px) rotate(360deg) scale(1.02); }
+  72% { transform: translateY(-8px) rotate(380deg) scale(1.06); }
+  74% { transform: translateY(-1px) rotate(360deg) scale(1); }
+
+  /* Phase 4: Moonwalk slide (75-100%) — smooth lateral glide + bounce */
+  75% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+  77% { transform: translateY(-3px) translateX(8px) rotate(2deg) scale(1.01); }
+  79% { transform: translateY(-1px) translateX(15px) rotate(0deg) scale(1); }
+  81% { transform: translateY(-4px) translateX(10px) rotate(-2deg) scale(1.02); }
+  83% { transform: translateY(-1px) translateX(2px) rotate(0deg) scale(1); }
+  85% { transform: translateY(-3px) translateX(-8px) rotate(-2deg) scale(1.01); }
+  87% { transform: translateY(-1px) translateX(-15px) rotate(0deg) scale(1); }
+  89% { transform: translateY(-4px) translateX(-10px) rotate(2deg) scale(1.02); }
+  91% { transform: translateY(-1px) translateX(-2px) rotate(0deg) scale(1); }
+  93% { transform: translateY(-10px) translateX(0) rotate(0deg) scale(1.08); }
+  95% { transform: translateY(3px) translateX(0) rotate(0deg) scaleX(1.06) scaleY(0.94); }
+  97% { transform: translateY(-6px) translateX(0) rotate(0deg) scale(1.04); }
+  99% { transform: translateY(-1px) translateX(0) rotate(0deg) scale(1.01); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+}
+
+/* Stagger hover dance start per card so they don't sync */
+.trading-card:nth-child(1):hover .card-mochi svg { animation-delay: 0s; }
+.trading-card:nth-child(2):hover .card-mochi svg { animation-delay: -5s; }
+.trading-card:nth-child(3):hover .card-mochi svg { animation-delay: -10s; }
+.trading-card:nth-child(4):hover .card-mochi svg { animation-delay: -15s; }
+.trading-card:nth-child(5):hover .card-mochi svg { animation-delay: -20s; }
+.trading-card:nth-child(6):hover .card-mochi svg { animation-delay: -25s; }
 
 /* Only animate when in view (reduced motion or not yet scrolled) */
 @media (prefers-reduced-motion: reduce) {
@@ -1648,6 +1754,61 @@ section {
 .card-move strong {
   color: var(--charcoal);
   font-style: normal;
+}
+
+/* Live activity status */
+.card-status {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-top: var(--space-xs);
+  min-height: 1.2em;
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-status.fading {
+  opacity: 0;
+}
+
+/* Fun fact tooltip — appears on extended hover */
+.card-fun-fact {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--charcoal);
+  color: var(--white);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  white-space: normal;
+  max-width: 220px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-fun-fact::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--charcoal);
+}
+
+.trading-card.show-fun-fact .card-fun-fact {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .squad-footer {
@@ -1851,11 +2012,11 @@ section {
   color: var(--coral);
 }
 
-/* --- Scroll Animations --- */
+/* --- Scroll Animations (Enhanced) --- */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .animate-on-scroll.visible {
@@ -1868,11 +2029,36 @@ section {
 .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
 .animate-on-scroll.delay-4 { transition-delay: 0.4s; }
 .animate-on-scroll.delay-5 { transition-delay: 0.5s; }
+.animate-on-scroll.delay-6 { transition-delay: 0.6s; }
+
+/* Trading cards: stagger from bottom with slight scale */
+.trading-card.animate-on-scroll {
+  transform: translateY(40px) scale(0.95);
+}
+.trading-card.animate-on-scroll.visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Problem cards: slide from left */
+.problem-card.animate-on-scroll {
+  transform: translateX(-30px) translateY(10px);
+}
+.problem-card.animate-on-scroll.visible {
+  transform: translateX(0) translateY(0);
+}
+
+/* Step cards: pop in with bounce */
+.step-card.animate-on-scroll {
+  transform: translateY(30px) scale(0.9);
+}
+.step-card.animate-on-scroll.visible {
+  transform: translateY(0) scale(1);
+}
 
 .animate-scale {
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .animate-scale.visible {
@@ -2213,7 +2399,7 @@ section {
   100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
 
-/* Buddy idle bobbing */
+/* Buddy idle bobbing — Level 0 (default) */
 .octo-buddy.visible svg {
   animation: buddyFloat 3s ease-in-out infinite;
 }
@@ -2221,6 +2407,63 @@ section {
 @keyframes buddyFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+
+/* Level 1: Head bob added */
+.octo-buddy.dance-level-1 svg {
+  animation: buddyFloat 3s ease-in-out infinite, buddyHeadBob 2s ease-in-out infinite;
+}
+
+@keyframes buddyHeadBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-2deg); }
+  75% { transform: translateY(-4px) rotate(2deg); }
+}
+
+/* Level 2: Arms start waving */
+.octo-buddy.dance-level-2 svg {
+  animation: buddyFloat 2.5s ease-in-out infinite;
+}
+.octo-buddy.dance-level-2 .buddy-arm-l {
+  animation: buddyArmWaveL 1.5s ease-in-out infinite;
+  transform-origin: 12px 36px;
+}
+.octo-buddy.dance-level-2 .buddy-arm-r {
+  animation: buddyArmWaveR 1.5s ease-in-out infinite 0.3s;
+  transform-origin: 52px 36px;
+}
+
+@keyframes buddyArmWaveL {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-20deg); }
+}
+
+@keyframes buddyArmWaveR {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+/* Level 3: Full groove (body sway + arms + bounce) */
+.octo-buddy.dance-level-3 svg {
+  animation: buddyGroove 2s ease-in-out infinite;
+}
+.octo-buddy.dance-level-3 .buddy-arm-l {
+  animation: buddyArmWaveL 1s ease-in-out infinite;
+  transform-origin: 12px 36px;
+}
+.octo-buddy.dance-level-3 .buddy-arm-r {
+  animation: buddyArmWaveR 1s ease-in-out infinite 0.2s;
+  transform-origin: 52px 36px;
+}
+
+@keyframes buddyGroove {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  15% { transform: translateY(-8px) rotate(-3deg) scale(1.03); }
+  30% { transform: translateY(-2px) rotate(2deg) scale(1); }
+  45% { transform: translateY(-10px) rotate(-2deg) scale(1.04); }
+  60% { transform: translateY(-3px) rotate(3deg) scale(1); }
+  75% { transform: translateY(-7px) rotate(-2deg) scale(1.02); }
+  90% { transform: translateY(-1px) rotate(1deg) scale(1); }
 }
 
 /* Speech bubble */
@@ -2577,6 +2820,65 @@ section {
 
   .card-move {
     grid-column: 1 / -1;
+  }
+
+  .card-status {
+    grid-column: 1 / -1;
+    font-size: 0.625rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-fun-fact {
+    grid-column: 1 / -1;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    max-width: 100%;
+    margin-top: var(--space-xs);
+    opacity: 0;
+    font-size: 0.6875rem;
+  }
+
+  .card-fun-fact::after {
+    display: none;
+  }
+
+  .trading-card.show-fun-fact .card-fun-fact {
+    transform: none;
+  }
+}
+
+/* Touch-to-dance class for mobile */
+.trading-card.touch-dancing .card-mochi svg {
+  animation: mochiGroove 4s ease-in-out 1 !important;
+}
+.trading-card.touch-dancing .card-mochi .mochi-arm-l {
+  animation: mochiArmDanceL 1s ease-in-out 4 !important;
+}
+.trading-card.touch-dancing .card-mochi .mochi-arm-r {
+  animation: mochiArmDanceR 1s ease-in-out 4 0.2s !important;
+}
+
+/* Mobile buddy positioning — don't overlap sticky CTA */
+@media (max-width: 768px) {
+  .octo-buddy {
+    bottom: 70px;
+    right: 12px;
+  }
+
+  .octo-buddy svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .buddy-bubble {
+    max-width: 180px;
+    font-size: 11px;
+    bottom: 65px;
+    right: 5px;
   }
 }
 
