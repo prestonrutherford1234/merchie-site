@@ -217,18 +217,14 @@ function initSignupForms() {
       identifyInCIO({ email, company, revenue, challenge });
       transitionStep('heroStep2', 'heroStep3');
 
-      // BIG celebration: ecstatic octopus + confetti explosion + hearts
-      if (window.octoBuddy) {
-        window.octoBuddy.setMood('ecstatic');
-        window.octoBuddy.say("YOU'RE IN! 🎉🎉🎉");
-        window.octoBuddy.emitParticles(['❤️', '🎁', '🎉', '🌟', '💝', '🎊'], 15);
-      }
+      triggerMochiCelebration();
       if (window.confetti) window.confetti.explosion(150);
     });
   }
 
-  // --- Footer form: 2-step flow ---
+  // --- Footer form: 3-step flow ---
   const footerEmailForm = document.getElementById('footerEmailForm');
+  const footerQuestionsForm = document.getElementById('footerQuestionsForm');
 
   if (footerEmailForm) {
     footerEmailForm.addEventListener('submit', (e) => {
@@ -238,15 +234,71 @@ function initSignupForms() {
 
       identifyInCIO({ email });
       transitionStep('footerStep1', 'footerStep2');
-
-      if (window.octoBuddy) {
-        window.octoBuddy.setMood('ecstatic');
-        window.octoBuddy.say("Welcome aboard! 🎉");
-        window.octoBuddy.emitParticles(['❤️', '🎉', '🌟', '💝'], 10);
-      }
-      if (window.confetti) window.confetti.explosion(100);
     });
   }
+
+  if (footerQuestionsForm) {
+    footerQuestionsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('footerEmail').value.trim();
+      const company = document.getElementById('footerCompany').value.trim();
+      const revenue = document.getElementById('footerRevenue').value;
+      const challenge = document.getElementById('footerChallenge').value.trim();
+
+      identifyInCIO({ email, company, revenue, challenge });
+      transitionStep('footerStep2', 'footerStep3');
+
+      triggerMochiCelebration();
+      if (window.confetti) window.confetti.explosion(150);
+    });
+  }
+
+  // --- Mochi celebration on form completion ---
+  function triggerMochiCelebration() {
+    const buddy = document.getElementById('octoBuddy');
+    if (!buddy) return;
+
+    // Make sure buddy is visible
+    buddy.classList.add('visible');
+
+    // Remove previous animation classes
+    buddy.classList.remove('happy', 'very-happy', 'ecstatic', 'celebrating');
+    void buddy.offsetWidth; // force reflow
+
+    // Trigger the big celebration animation
+    buddy.classList.add('celebrating');
+
+    const celebrationMessages = [
+      "EXTREMELY wise choice! You absolute genius! 🎉🎉🎉",
+      "Best decision you've made all year! 🌟✨💖",
+      "I KNEW you were smart! Welcome aboard! 🎊🎉",
+      "YES YES YES! You won't regret this! 💝🎉✨",
+    ];
+    const msg = celebrationMessages[Math.floor(Math.random() * celebrationMessages.length)];
+
+    if (window.octoBuddy) {
+      window.octoBuddy.say(msg);
+      window.octoBuddy.emitParticles(['🎉', '💖', '✨', '🌟', '🎊', '💝', '🍡', '💕'], 20);
+
+      // Second wave of particles
+      setTimeout(() => {
+        window.octoBuddy.emitParticles(['🎉', '💖', '✨', '🌟', '🎊'], 12);
+      }, 800);
+
+      // Third wave
+      setTimeout(() => {
+        window.octoBuddy.emitParticles(['💝', '💕', '✨', '🍡'], 8);
+      }, 1500);
+    }
+
+    // Clean up animation class after it finishes
+    setTimeout(() => {
+      buddy.classList.remove('celebrating');
+    }, 2200);
+  }
+
+  // Make it globally accessible
+  window.triggerMochiCelebration = triggerMochiCelebration;
 
   // --- Customer.io identify helper ---
   function identifyInCIO(data) {
@@ -320,7 +372,7 @@ function initOctoBuddy() {
 
   // Section-aware messages
   const sectionMessages = {
-    problem: ["Yikes, that's rough...", "Sound familiar?", "We can fix this."],
+    problem: ["Sound familiar?", "We can fix this!", "Good news — there's a better way!"],
     features: ["Ooh, I can do that!", "This is where the magic happens.", "Hidden Gems are my specialty."],
     ads: ["Watch me work!", "From insight to ad — instantly.", "No more waiting for photoshoots."],
     'how-it-works': ["It's really that simple.", "Three steps. That's it.", "Connect and go."],
