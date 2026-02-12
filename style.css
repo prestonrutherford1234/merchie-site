@@ -588,6 +588,22 @@ section {
   min-width: 0;
 }
 
+.input-group input[type="email"]:-webkit-autofill,
+.input-group input[type="email"]:-webkit-autofill:hover,
+.input-group input[type="email"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: var(--charcoal);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-group-dark input[type="email"]:-webkit-autofill,
+.input-group-dark input[type="email"]:-webkit-autofill:hover,
+.input-group-dark input[type="email"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--forest-dark) inset;
+  -webkit-text-fill-color: var(--white);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .input-group input[type="email"]::placeholder {
   color: var(--text-muted);
 }
@@ -2260,6 +2276,14 @@ section {
 .sticky-cta-form input[type="email"]:focus {
   border-color: var(--coral);
   box-shadow: 0 0 0 3px var(--coral-glow);
+}
+
+.sticky-cta-form input[type="email"]:-webkit-autofill,
+.sticky-cta-form input[type="email"]:-webkit-autofill:hover,
+.sticky-cta-form input[type="email"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: var(--charcoal);
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .btn-sticky {
