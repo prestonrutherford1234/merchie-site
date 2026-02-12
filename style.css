@@ -2680,6 +2680,19 @@ section {
     max-width: 100%;
   }
 
+  .hero-product-label {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tagline {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.0625rem;
+  }
+
   .hero-sub {
     max-width: 100%;
     margin-left: auto;
@@ -2715,12 +2728,85 @@ section {
 
   .hero-visual {
     order: -1;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto;
+    width: 100%;
+  }
+
+  .cycle-scene {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    max-width: 280px;
+  }
+
+  .cycle-arrows {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cycle-mochi {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cycle-stage-inner {
+    min-width: 100px;
+    padding: 8px 12px;
+  }
+
+  .cycle-icon {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+  }
+
+  .cycle-label {
+    font-size: 0.75rem;
+  }
+
+  .cycle-desc {
+    font-size: 0.625rem;
+  }
+
+  .stage-discover {
+    top: -14px;
+    margin-left: -50px;
+  }
+
+  .stage-launch {
+    bottom: 20px;
+    right: -10px;
+  }
+
+  .stage-grow {
+    bottom: 20px;
+    left: -10px;
+  }
+
+  .hero-mochi-bubble {
+    font-size: 11px;
+    padding: 6px 10px;
+    top: 20px;
+    right: -5px;
   }
 
   .social-proof {
     text-align: center;
+  }
+
+  .chubbies-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    justify-items: center;
+  }
+
+  .chubbies-stat-divider {
+    display: none;
+  }
+
+  .chubbies-stat {
+    align-items: center;
   }
 
   .logo-bar {
@@ -2735,6 +2821,7 @@ section {
   .feature-block.reverse {
     grid-template-columns: 1fr;
     direction: ltr;
+    gap: var(--space-lg);
   }
 
   .feature-block.reverse > * {
@@ -2743,6 +2830,34 @@ section {
 
   .feature-visual {
     order: -1;
+    min-height: auto;
+    padding: var(--space-md);
+  }
+
+  .rank-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .rank-item .rank-name {
+    font-size: 0.8125rem;
+    min-width: 0;
+  }
+
+  .rank-item .rank-badge {
+    font-size: 0.625rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .rank-item .rank-num {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6875rem;
+  }
+
+  .ltv-product-name {
+    font-size: 0.6875rem;
   }
 
   .steps-grid {
@@ -2763,12 +2878,15 @@ section {
   }
 
   .squad-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-md);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .trading-card {
-    padding: var(--space-md) var(--space-sm);
+    padding: var(--space-md);
   }
 
   .card-mochi svg {
@@ -2786,7 +2904,7 @@ section {
   }
 
   .card-stats {
-    gap: 0.25rem;
+    gap: 0.5rem;
     padding: var(--space-xs) 0;
   }
 
@@ -2809,6 +2927,22 @@ section {
 
   .squad-footer {
     font-size: 0.875rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .feature-content h3 {
+    font-size: 1.375rem;
+  }
+
+  .feature-content p {
+    font-size: 1rem;
+  }
+
+  .mid-cta-inner h2 {
+    font-size: 1.5rem;
   }
 
   .footer-grid {
@@ -2848,18 +2982,13 @@ section {
     transform: rotate(90deg);
   }
 
-  .squad-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
-  }
-
   .trading-card {
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 70px 1fr;
     grid-template-rows: auto auto auto;
     text-align: left;
     padding: var(--space-md);
-    gap: 0 var(--space-md);
+    gap: 0 var(--space-sm);
   }
 
   .card-online {
@@ -2877,13 +3006,13 @@ section {
   }
 
   .card-mochi svg {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
   }
 
   .card-name {
     grid-column: 2;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0;
     align-self: end;
   }
@@ -3065,6 +3194,28 @@ section {
 
   .sticky-cta-bar {
     padding: 10px var(--space-md);
+  }
+
+  .sticky-cta-form {
+    gap: 0.5rem;
+  }
+
+  .btn-sticky {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .sticky-cta-form input[type="email"] {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .sticky-dismiss {
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
   }
 }
 
