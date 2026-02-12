@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSignupForms();
   initOctoBuddy();
   initConfetti();
+  initCursorGlow();
+  initTiltCards();
+  initTextReveal();
 });
 
 /* --- Navigation Scroll Effect --- */
@@ -561,5 +564,117 @@ function initFAQ() {
         item.classList.add('open');
       }
     });
+  });
+}
+
+/* --- Cursor Glow Effect --- */
+function initCursorGlow() {
+  // Skip on touch devices
+  if ('ontouchstart' in window) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    glow.classList.add('active');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    glow.classList.remove('active');
+  });
+
+  // Smooth follow with lerp
+  function updateGlow() {
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    glow.style.left = glowX + 'px';
+    glow.style.top = glowY + 'px';
+    requestAnimationFrame(updateGlow);
+  }
+  updateGlow();
+}
+
+/* --- 3D Tilt on Cards --- */
+function initTiltCards() {
+  if ('ontouchstart' in window) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const cards = document.querySelectorAll('.feature-visual, .problem-card, .ads-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.01)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+/* --- Text Reveal Animation --- */
+function initTextReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Add a typewriter effect to the hero counter stats when they come into view
+  const stats = document.querySelectorAll('.stat-value');
+  stats.forEach(stat => {
+    stat.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+  });
+
+  // Add staggered reveal to section eyebrows
+  const eyebrows = document.querySelectorAll('.eyebrow');
+  eyebrows.forEach(eyebrow => {
+    if (eyebrow.closest('.hero')) return; // hero already has its own animation
+    eyebrow.style.opacity = '0';
+    eyebrow.style.transform = 'translateY(10px)';
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          eyebrow.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          eyebrow.style.opacity = '1';
+          eyebrow.style.transform = 'translateY(0)';
+          observer.unobserve(eyebrow);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(eyebrow);
+  });
+
+  // Number counter glow effect when counting
+  const counters = document.querySelectorAll('[data-count]');
+  counters.forEach(counter => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counter.style.textShadow = '0 0 20px var(--coral-glow-strong)';
+          setTimeout(() => {
+            counter.style.transition = 'text-shadow 1s ease';
+            counter.style.textShadow = 'none';
+          }, 1600);
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(counter);
   });
 }

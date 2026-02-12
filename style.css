@@ -173,8 +173,13 @@ section {
 
 .btn-primary:hover {
   background: var(--coral-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px var(--coral-glow-strong);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 28px var(--coral-glow-strong), 0 0 40px var(--coral-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 0.1s ease;
 }
 
 .btn-primary:active {
@@ -391,6 +396,42 @@ section {
   color: var(--charcoal);
 }
 
+/* --- Animated gradient background blobs --- */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.4;
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+.hero::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--coral-glow-strong) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.hero::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  bottom: -50px;
+  left: -100px;
+  animation-delay: -6s;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
 /* --- Hero --- */
 .hero {
   padding-top: calc(var(--nav-height) + var(--space-3xl));
@@ -428,7 +469,17 @@ section {
 }
 
 .hero h1 .highlight {
-  color: var(--coral);
+  background: linear-gradient(135deg, var(--coral), var(--gold), var(--coral-dark), var(--coral));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero-sub {
@@ -823,6 +874,13 @@ section {
   justify-content: center;
   overflow: hidden;
   position: relative;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
+}
+
+.feature-visual:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--coral-glow);
+  border-color: var(--coral-glow-strong);
 }
 
 /* Feature 1: Rank Alignment Visual */
@@ -1573,6 +1631,44 @@ section {
 
 .octopus-svg .body-main {
   animation: gentleBob 5s ease-in-out infinite;
+}
+
+/* --- Cursor Glow --- */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--coral-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  mix-blend-mode: normal;
+}
+
+.cursor-glow.active {
+  opacity: 1;
+}
+
+/* --- Staggered card entrance --- */
+.problem-card,
+.ads-card,
+.how-step,
+.faq-item {
+  transition: all var(--transition-medium), opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* --- Smooth section dividers with animated gradient --- */
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--coral-glow-strong), var(--gold-glow), transparent);
 }
 
 /* --- Floating Octopus Buddy --- */
