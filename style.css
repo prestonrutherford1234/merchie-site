@@ -1706,6 +1706,12 @@ section {
   margin-bottom: 0.125rem;
 }
 
+.card-last-name {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
 .card-role {
   font-size: 0.8125rem;
   font-weight: 600;
@@ -2478,8 +2484,8 @@ section {
   font-family: var(--font-body);
   color: var(--charcoal);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  white-space: normal;
-  max-width: 220px;
+  white-space: nowrap;
+  max-width: none;
   text-align: center;
   opacity: 0;
   transform: translateY(8px) scale(0.9);
