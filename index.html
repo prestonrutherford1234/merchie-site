@@ -39,33 +39,32 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="/" class="nav-logo" aria-label="Merchie home">
-        <!-- Friendly octopus nav icon — emoji-style, monocle, curly tentacles -->
+        <!-- Merchie the Mochi — nav icon -->
         <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Round emoji-style head -->
-          <ellipse cx="32" cy="26" rx="24" ry="22" fill="#FF6B6B"/>
-          <ellipse cx="32" cy="26" rx="24" ry="22" fill="url(#nav-shine)" opacity="0.3"/>
-          <defs><radialGradient id="nav-shine" cx="35%" cy="25%"><stop offset="0%" stop-color="white" stop-opacity="0.4"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs>
+          <defs><radialGradient id="nav-shine" cx="35%" cy="30%"><stop offset="0%" stop-color="white" stop-opacity="0.5"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs>
+          <!-- Squishy mochi body -->
+          <ellipse cx="32" cy="32" rx="26" ry="24" fill="#FF6B6B"/>
+          <ellipse cx="32" cy="32" rx="26" ry="24" fill="url(#nav-shine)"/>
+          <!-- Bottom squish (sitting on surface) -->
+          <ellipse cx="32" cy="54" rx="20" ry="4" fill="#E85555" opacity="0.3"/>
           <!-- Big round eyes -->
-          <circle cx="23" cy="24" r="7" fill="white"/>
-          <circle cx="41" cy="24" r="7" fill="white"/>
-          <circle cx="24.5" cy="24" r="4" fill="#1B4332"/>
-          <circle cx="42.5" cy="24" r="4" fill="#1B4332"/>
-          <circle cx="26" cy="22.5" r="1.5" fill="white"/>
-          <circle cx="44" cy="22.5" r="1.5" fill="white"/>
-          <!-- Monocle on right eye -->
-          <circle cx="41" cy="24" r="9" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
-          <line x1="50" y1="24" x2="55" y2="32" stroke="#D4A84B" stroke-width="1"/>
+          <circle cx="24" cy="30" r="6" fill="white"/>
+          <circle cx="40" cy="30" r="6" fill="white"/>
+          <circle cx="25.5" cy="30" r="3.5" fill="#1B4332"/>
+          <circle cx="41.5" cy="30" r="3.5" fill="#1B4332"/>
+          <circle cx="27" cy="28.5" r="1.2" fill="white"/>
+          <circle cx="43" cy="28.5" r="1.2" fill="white"/>
+          <!-- Monocle -->
+          <circle cx="40" cy="30" r="8" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
+          <line x1="48" y1="30" x2="52" y2="38" stroke="#D4A84B" stroke-width="1"/>
           <!-- Happy smile -->
-          <path d="M25 34 Q32 41, 39 34" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M26 39 Q32 45, 38 39" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
           <!-- Rosy cheeks -->
-          <circle cx="17" cy="32" r="3" fill="#F4A261" opacity="0.4"/>
-          <circle cx="47" cy="32" r="3" fill="#F4A261" opacity="0.4"/>
-          <!-- Curly tentacles -->
-          <path d="M12 44 C8 50, 6 56, 10 60 C14 62, 16 58, 14 54" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M20 47 C17 54, 15 60, 19 62 C22 63, 23 59, 21 56" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M32 48 C32 55, 31 60, 34 62 C37 63, 37 58, 35 55" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M44 47 C47 54, 49 60, 45 62 C42 63, 41 59, 43 56" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M52 44 C56 50, 58 56, 54 60 C50 62, 48 58, 50 54" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="18" cy="37" r="3" fill="#F4A261" opacity="0.4"/>
+          <circle cx="46" cy="37" r="3" fill="#F4A261" opacity="0.4"/>
+          <!-- Tiny stubby arms -->
+          <ellipse cx="8" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(-20 8 36)"/>
+          <ellipse cx="56" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(20 56 36)"/>
         </svg>
         merchie
       </a>
@@ -162,24 +161,25 @@
         </div>
 
         <div class="hero-visual">
-          <!-- Hero Octopus — emoji-style round head, monocle, curly tentacles organizing product cards -->
-          <svg class="octopus-svg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Hero — Merchie the Mochi -->
+          <svg class="mochi-svg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- MOCHI_START -->
             <defs>
-              <linearGradient id="body-gradient" x1="140" y1="60" x2="280" y2="240">
-                <stop offset="0%" stop-color="#FF9E9E"/>
-                <stop offset="50%" stop-color="#FF6B6B"/>
-                <stop offset="100%" stop-color="#E85555"/>
+              <linearGradient id="body-gradient" x1="120" y1="60" x2="300" y2="320">
+                <stop offset="0%" stop-color="#FFB3B3"/>
+                <stop offset="40%" stop-color="#FF8A8A"/>
+                <stop offset="100%" stop-color="#FF6B6B"/>
               </linearGradient>
-              <radialGradient id="head-shine" cx="35%" cy="25%" r="60%">
-                <stop offset="0%" stop-color="white" stop-opacity="0.2"/>
+              <radialGradient id="head-shine" cx="32%" cy="28%" r="55%">
+                <stop offset="0%" stop-color="white" stop-opacity="0.35"/>
                 <stop offset="100%" stop-color="white" stop-opacity="0"/>
               </radialGradient>
               <radialGradient id="cheek-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.5"/>
+                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.55"/>
                 <stop offset="100%" stop-color="#F4A261" stop-opacity="0"/>
               </radialGradient>
               <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF6B6B" flood-opacity="0.15"/>
+                <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#FF6B6B" flood-opacity="0.2"/>
               </filter>
               <linearGradient id="monocle-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#F4D03F"/>
@@ -188,142 +188,94 @@
               </linearGradient>
             </defs>
 
+            <!-- Shadow on ground -->
+            <ellipse cx="210" cy="370" rx="100" ry="16" fill="#E0D5C8" opacity="0.4">
+              <animate attributeName="rx" values="100;95;100" dur="3s" repeatCount="indefinite"/>
+            </ellipse>
+
+            <!-- Main mochi body -->
             <g class="body-main" filter="url(#soft-shadow)">
-              <!-- Round emoji-style head — more circular, friendlier -->
-              <ellipse cx="210" cy="150" rx="108" ry="100" fill="url(#body-gradient)"/>
-              <ellipse cx="210" cy="150" rx="108" ry="100" fill="url(#head-shine)"/>
+              <!-- Big squishy mochi shape — wider at bottom -->
+              <path d="M100 210 C100 110, 140 60, 210 60 C280 60, 320 110, 320 210 C320 290, 295 340, 210 340 C125 340, 100 290, 100 210Z" fill="url(#body-gradient)"/>
+              <path d="M100 210 C100 110, 140 60, 210 60 C280 60, 320 110, 320 210 C320 290, 295 340, 210 340 C125 340, 100 290, 100 210Z" fill="url(#head-shine)"/>
 
-              <!-- Subtle head spots -->
-              <circle cx="155" cy="85" r="12" fill="#FF8A8A" opacity="0.4"/>
-              <circle cx="250" cy="78" r="9" fill="#FF8A8A" opacity="0.35"/>
-              <circle cx="200" cy="72" r="7" fill="#FF8A8A" opacity="0.3"/>
-              <circle cx="280" cy="105" r="10" fill="#FF8A8A" opacity="0.25"/>
-              <circle cx="140" cy="115" r="7" fill="#FF8A8A" opacity="0.3"/>
+              <!-- Mochi texture — soft highlights -->
+              <ellipse cx="170" cy="110" rx="30" ry="15" fill="white" opacity="0.08" transform="rotate(-15 170 110)"/>
+              <ellipse cx="260" cy="100" rx="22" ry="10" fill="white" opacity="0.06" transform="rotate(10 260 100)"/>
 
-              <!-- Big round emoji-style eyes -->
-              <g>
-                <!-- Left eye -->
-                <circle cx="175" cy="145" r="26" fill="white"/>
-                <circle cx="179" cy="148" r="14" fill="#1B4332"/>
-                <circle cx="184" cy="142" r="5" fill="white" opacity="0.85"/>
-                <circle cx="175" cy="154" r="2.5" fill="white" opacity="0.4"/>
-
-                <!-- Right eye -->
-                <circle cx="245" cy="145" r="26" fill="white"/>
-                <circle cx="241" cy="148" r="14" fill="#1B4332"/>
-                <circle cx="246" cy="142" r="5" fill="white" opacity="0.85"/>
-                <circle cx="237" cy="154" r="2.5" fill="white" opacity="0.4"/>
-              </g>
+              <!-- Big round kawaii eyes -->
+              <circle cx="175" cy="185" r="30" fill="white"/>
+              <circle cx="180" cy="190" r="16" fill="#1B4332"/>
+              <circle cx="186" cy="182" r="6" fill="white" opacity="0.9"/>
+              <circle cx="176" cy="196" r="3" fill="white" opacity="0.4"/>
+              <circle cx="250" cy="185" r="30" fill="white"/>
+              <circle cx="245" cy="190" r="16" fill="#1B4332"/>
+              <circle cx="251" cy="182" r="6" fill="white" opacity="0.9"/>
+              <circle cx="241" cy="196" r="3" fill="white" opacity="0.4"/>
 
               <!-- Monocle on right eye -->
-              <circle cx="245" cy="145" r="32" stroke="url(#monocle-gold)" stroke-width="3.5" fill="none"/>
-              <!-- Monocle rim highlight -->
-              <path d="M220 125 Q225 120, 232 118" stroke="#F4D03F" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <!-- Chain hanging down -->
-              <path d="M277 145 C285 155, 288 170, 282 185 C278 195, 272 200, 268 210" stroke="url(#monocle-gold)" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
-              <!-- Small chain connector -->
-              <circle cx="277" cy="145" r="2.5" fill="#D4A84B"/>
+              <circle cx="250" cy="185" r="36" stroke="url(#monocle-gold)" stroke-width="3.5" fill="none"/>
+              <path d="M222 162 Q228 156, 236 154" stroke="#F4D03F" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <path d="M286 185 C294 198, 296 215, 290 235 C286 248, 280 255, 276 262" stroke="url(#monocle-gold)" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
+              <circle cx="286" cy="185" r="2.5" fill="#D4A84B"/>
+
+              <!-- Raised studious eyebrow -->
+              <path d="M230 148 Q250 138, 270 146" stroke="#E85555" stroke-width="3" stroke-linecap="round" fill="none"/>
 
               <!-- Big happy smile -->
-              <path d="M185 188 Q210 212, 235 188" stroke="#C73D75" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M190 235 Q212 260, 235 235" stroke="#C73D75" stroke-width="4" stroke-linecap="round" fill="none"/>
 
               <!-- Rosy cheeks -->
-              <circle cx="150" cy="180" r="16" fill="url(#cheek-glow)"/>
-              <circle cx="270" cy="180" r="16" fill="url(#cheek-glow)"/>
-
-              <!-- Tiny raised eyebrow above monocle (studious look) -->
-              <path d="M228 112 Q245 104, 265 110" stroke="#E85555" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="148" cy="225" r="18" fill="url(#cheek-glow)"/>
+              <circle cx="278" cy="225" r="18" fill="url(#cheek-glow)"/>
             </g>
 
-            <!-- Tentacles — curly spirals like the emoji octopus -->
-
-            <!-- Left outer tentacle — curling inward with suction cups -->
-            <g class="tentacle-group tentacle-1">
-              <path d="M115 230 C85 265, 55 310, 40 345 C28 372, 38 392, 55 390 C72 388, 78 368, 72 348 C66 328, 58 318, 62 308 C66 298, 78 300, 75 312" stroke="#FF6B6B" stroke-width="16" stroke-linecap="round" fill="none"/>
-              <path d="M115 230 C85 265, 55 310, 40 345 C28 372, 38 392, 55 390 C72 388, 78 368, 72 348 C66 328, 58 318, 62 308 C66 298, 78 300, 75 312" stroke="#FF8A8A" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.3"/>
-              <circle cx="68" cy="310" r="4" fill="#E85555" opacity="0.3"/>
-              <circle cx="50" cy="340" r="3.5" fill="#E85555" opacity="0.25"/>
-              <circle cx="60" cy="370" r="3" fill="#E85555" opacity="0.2"/>
-            </g>
-
-            <!-- Left-center tentacle — holding a mini chart -->
-            <g class="tentacle-group tentacle-2">
-              <path d="M148 242 C125 285, 108 335, 100 370 C94 398, 110 408, 125 402 C140 396, 138 375, 132 350 C126 325, 122 310, 128 300" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
-              <path d="M148 242 C125 285, 108 335, 100 370 C94 398, 110 408, 125 402 C140 396, 138 375, 132 350 C126 325, 122 310, 128 300" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
-              <circle cx="118" cy="330" r="3.5" fill="#E85555" opacity="0.25"/>
-              <circle cx="105" cy="360" r="3" fill="#E85555" opacity="0.2"/>
-              <!-- Mini bar chart being held -->
-              <g transform="translate(56, 285) rotate(-8)">
-                <rect x="0" y="0" width="46" height="38" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1"/>
-                <rect x="6" y="20" width="7" height="12" rx="1.5" fill="#FF6B6B" opacity="0.8"/>
-                <rect x="15" y="12" width="7" height="20" rx="1.5" fill="#1B4332" opacity="0.6"/>
-                <rect x="24" y="16" width="7" height="16" rx="1.5" fill="#F4A261" opacity="0.8"/>
-                <rect x="33" y="8" width="7" height="24" rx="1.5" fill="#1B4332" opacity="0.8"/>
+            <!-- Left arm — stubby, holding a bar chart -->
+            <g class="mochi-arm-l">
+              <ellipse cx="80" cy="220" rx="28" ry="16" fill="#FF8A8A" transform="rotate(-25 80 220)"/>
+              <ellipse cx="65" cy="210" rx="12" ry="8" fill="#FF9E9E" transform="rotate(-25 65 210)"/>
+              <g transform="translate(28, 195) rotate(-12)">
+                <rect x="0" y="0" width="50" height="40" rx="6" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+                <rect x="7" y="22" width="8" height="12" rx="2" fill="#FF6B6B" opacity="0.8"/>
+                <rect x="17" y="14" width="8" height="20" rx="2" fill="#1B4332" opacity="0.7"/>
+                <rect x="27" y="18" width="8" height="16" rx="2" fill="#F4A261" opacity="0.8"/>
+                <rect x="37" y="8" width="8" height="26" rx="2" fill="#1B4332" opacity="0.9"/>
               </g>
             </g>
 
-            <!-- Center-left tentacle — curling -->
-            <g class="tentacle-group tentacle-3">
-              <path d="M178 248 C165 300, 155 350, 158 385 C160 410, 178 415, 190 408 C200 400, 195 378, 186 352 C178 328, 175 315, 182 305 C188 296, 196 302, 192 315" stroke="#FF6B6B" stroke-width="13" stroke-linecap="round" fill="none"/>
-              <path d="M178 248 C165 300, 155 350, 158 385 C160 410, 178 415, 190 408 C200 400, 195 378, 186 352 C178 328, 175 315, 182 305 C188 296, 196 302, 192 315" stroke="#FF8A8A" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.3"/>
-            </g>
-
-            <!-- Center tentacle -->
-            <g class="tentacle-group tentacle-4">
-              <path d="M205 250 C200 305, 196 355, 202 390 C206 412, 220 416, 230 408 C238 400, 232 376, 224 350 C216 326, 212 310, 218 298" stroke="#FF6B6B" stroke-width="13" stroke-linecap="round" fill="none"/>
-              <path d="M205 250 C200 305, 196 355, 202 390 C206 412, 220 416, 230 408 C238 400, 232 376, 224 350 C216 326, 212 310, 218 298" stroke="#FF8A8A" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.3"/>
-            </g>
-
-            <!-- Center-right tentacle -->
-            <g class="tentacle-group tentacle-5">
-              <path d="M235 250 C240 305, 248 355, 242 390 C238 412, 252 416, 262 408 C272 400, 264 376, 256 350 C248 326, 244 310, 250 298" stroke="#FF6B6B" stroke-width="13" stroke-linecap="round" fill="none"/>
-              <path d="M235 250 C240 305, 248 355, 242 390 C238 412, 252 416, 262 408 C272 400, 264 376, 256 350 C248 326, 244 310, 250 298" stroke="#FF8A8A" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.3"/>
-            </g>
-
-            <!-- Right-center tentacle — curling -->
-            <g class="tentacle-group tentacle-6">
-              <path d="M265 248 C278 300, 288 350, 285 385 C283 410, 265 415, 252 408 C242 400, 248 378, 256 352 C264 328, 268 315, 260 305 C254 296, 246 302, 250 315" stroke="#FF6B6B" stroke-width="13" stroke-linecap="round" fill="none"/>
-              <path d="M265 248 C278 300, 288 350, 285 385 C283 410, 265 415, 252 408 C242 400, 248 378, 256 352 C264 328, 268 315, 260 305 C254 296, 246 302, 250 315" stroke="#FF8A8A" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.3"/>
-            </g>
-
-            <!-- Right-center outer tentacle -->
-            <g class="tentacle-group tentacle-7">
-              <path d="M295 242 C318 285, 335 335, 342 370 C348 398, 332 408, 318 402 C304 396, 305 375, 310 350 C315 325, 318 310, 312 300" stroke="#FF6B6B" stroke-width="14" stroke-linecap="round" fill="none"/>
-              <path d="M295 242 C318 285, 335 335, 342 370 C348 398, 332 408, 318 402 C304 396, 305 375, 310 350 C315 325, 318 310, 312 300" stroke="#FF8A8A" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.3"/>
-              <circle cx="325" cy="330" r="3.5" fill="#E85555" opacity="0.25"/>
-              <circle cx="338" cy="360" r="3" fill="#E85555" opacity="0.2"/>
-            </g>
-
-            <!-- Right outer tentacle — placing a product card precisely -->
-            <g class="tentacle-group tentacle-8">
-              <path d="M315 230 C348 265, 372 310, 378 345 C382 368, 370 385, 355 382 C340 378, 338 358, 342 338 C346 318, 350 308, 345 298" stroke="#FF6B6B" stroke-width="16" stroke-linecap="round" fill="none"/>
-              <path d="M315 230 C348 265, 372 310, 378 345 C382 368, 370 385, 355 382 C340 378, 338 358, 342 338 C346 318, 350 308, 345 298" stroke="#FF8A8A" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.3"/>
-              <circle cx="362" cy="330" r="4" fill="#E85555" opacity="0.3"/>
-              <circle cx="368" cy="355" r="3.5" fill="#E85555" opacity="0.25"/>
-              <!-- Product card being placed precisely -->
-              <g transform="translate(355, 290) rotate(5)">
-                <rect x="0" y="0" width="52" height="62" rx="6" fill="white" stroke="#E0E0E0" stroke-width="1"/>
-                <rect x="6" y="6" width="40" height="24" rx="4" fill="#FDF8F3"/>
-                <rect x="6" y="36" width="24" height="3" rx="1.5" fill="#E0E0E0"/>
-                <rect x="6" y="43" width="16" height="3" rx="1.5" fill="#1B4332" opacity="0.3"/>
-                <rect x="6" y="50" width="32" height="8" rx="4" fill="rgba(27,67,50,0.1)"/>
-                <text x="10" y="57" font-size="5" font-weight="600" fill="#1B4332" font-family="Inter, sans-serif">HIDDEN GEM</text>
+            <!-- Right arm — stubby, placing a product card -->
+            <g class="mochi-arm-r">
+              <ellipse cx="340" cy="220" rx="28" ry="16" fill="#FF8A8A" transform="rotate(25 340 220)"/>
+              <ellipse cx="355" cy="210" rx="12" ry="8" fill="#FF9E9E" transform="rotate(25 355 210)"/>
+              <g transform="translate(348, 190) rotate(8)">
+                <rect x="0" y="0" width="56" height="66" rx="7" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+                <rect x="7" y="7" width="42" height="26" rx="4" fill="#FDF8F3"/>
+                <rect x="7" y="38" width="26" height="3.5" rx="1.5" fill="#E0E0E0"/>
+                <rect x="7" y="46" width="18" height="3.5" rx="1.5" fill="#1B4332" opacity="0.3"/>
+                <rect x="7" y="54" width="34" height="8" rx="4" fill="rgba(27,67,50,0.1)"/>
+                <text x="11" y="61" font-size="5.5" font-weight="700" fill="#1B4332" font-family="Inter, sans-serif">HIDDEN GEM</text>
               </g>
             </g>
 
-            <!-- Gold sparkle accents around monocle & head -->
-            <circle cx="290" cy="110" r="3" fill="#F4D03F" opacity="0.6">
+            <!-- Tiny feet -->
+            <ellipse cx="185" cy="345" rx="18" ry="8" fill="#FF8A8A"/>
+            <ellipse cx="235" cy="345" rx="18" ry="8" fill="#FF8A8A"/>
+
+            <!-- Gold sparkles -->
+            <circle cx="300" cy="140" r="3.5" fill="#F4D03F" opacity="0.6">
               <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="300" cy="135" r="2.5" fill="#F4D03F" opacity="0.5">
+            <circle cx="310" cy="175" r="2.5" fill="#F4D03F" opacity="0.5">
               <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.5s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="130" cy="80" r="2.5" fill="#F4A261" opacity="0.5">
+            <circle cx="120" cy="100" r="3" fill="#F4A261" opacity="0.5">
               <animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="100" cy="165" r="2" fill="#F4A261" opacity="0.3">
+            <circle cx="95" cy="200" r="2" fill="#F4A261" opacity="0.3">
               <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.5s" repeatCount="indefinite"/>
             </circle>
+
+            <!-- MOCHI_END -->
           </svg>
         </div>
       </div>
@@ -743,7 +695,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <!-- Simplified friendly octopus for footer — emoji-style with monocle -->
+            <!-- Merchie the Mochi — footer icon -->
             <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <ellipse cx="32" cy="26" rx="24" ry="22" fill="#FF6B6B"/>
               <circle cx="23" cy="24" r="7" fill="white"/>
