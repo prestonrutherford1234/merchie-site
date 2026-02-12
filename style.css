@@ -482,14 +482,47 @@ section {
   50% { background-position: 100% 50%; }
 }
 
+/* Hero product label */
+.hero-product-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--coral);
+  margin-bottom: var(--space-sm);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.05s;
+  max-width: 520px;
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.25s;
+  max-width: 520px;
+}
+
 .hero-sub {
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   max-width: 520px;
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards;
   animation-delay: 0.35s;
+}
+
+.hero-sub-team {
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-xl);
+  animation-delay: 0.4s;
 }
 
 .hero-actions {
@@ -744,19 +777,38 @@ section {
   margin-bottom: var(--space-md);
 }
 
-.logo-bar {
+/* Chubbies stats bar */
+.chubbies-stats {
   display: flex;
   align-items: center;
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
   flex-wrap: wrap;
 }
 
-.logo-bar .logo-placeholder {
-  width: 100px;
-  height: 32px;
-  background: var(--border-light);
-  border-radius: var(--radius-sm);
-  opacity: 0.5;
+.chubbies-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chubbies-stat-value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+.chubbies-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  max-width: 140px;
+}
+
+.chubbies-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-medium);
 }
 
 /* --- Problem Section --- */
@@ -1617,33 +1669,181 @@ section {
 
 /* --- Mochi SVG Animations --- */
 .mochi-svg .body-main {
-  animation: mochiSquish 3s ease-in-out infinite;
+  animation: mochiSquish 2.5s ease-in-out infinite, mochiBreath 4s ease-in-out infinite;
   transform-origin: center bottom;
 }
 
 @keyframes mochiSquish {
   0%, 100% { transform: scaleX(1) scaleY(1); }
-  50% { transform: scaleX(1.02) scaleY(0.98); }
+  25% { transform: scaleX(1.03) scaleY(0.97); }
+  50% { transform: scaleX(0.98) scaleY(1.02); }
+  75% { transform: scaleX(1.02) scaleY(0.98); }
+}
+
+@keyframes mochiBreath {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
 }
 
 .mochi-svg .mochi-arm-l {
-  animation: armWaveL 4s ease-in-out infinite;
+  animation: armWaveL 3.5s ease-in-out infinite;
   transform-origin: right center;
 }
 
 .mochi-svg .mochi-arm-r {
-  animation: armWaveR 4.3s ease-in-out infinite 0.5s;
+  animation: armWaveR 3.8s ease-in-out infinite 0.5s;
   transform-origin: left center;
 }
 
 @keyframes armWaveL {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-5deg) translateY(-3px); }
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  30% { transform: rotate(-6deg) translateY(-4px); }
+  60% { transform: rotate(-2deg) translateY(-1px); }
 }
 
 @keyframes armWaveR {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(5deg) translateY(-3px); }
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  30% { transform: rotate(6deg) translateY(-4px); }
+  60% { transform: rotate(2deg) translateY(-1px); }
+}
+
+/* Mochi hover shimmer */
+.mochi-svg:hover .body-main {
+  animation: mochiSquish 1.8s ease-in-out infinite;
+  filter: brightness(1.05);
+}
+
+/* --- Virtuous Cycle Scene --- */
+.cycle-scene {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycle-mochi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.cycle-arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: cycleArrowsSpin 30s linear infinite;
+}
+
+@keyframes cycleArrowsSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cycle-stage {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.cycle-stage.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.cycle-stage-inner {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 12px 18px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--border-light);
+  min-width: 130px;
+}
+
+.cycle-icon {
+  font-size: 1.75rem;
+  margin-bottom: 4px;
+}
+
+.cycle-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+}
+
+.cycle-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Position stages around the circle */
+.stage-discover {
+  top: -10px;
+  left: 50%;
+  transform-origin: center bottom;
+  margin-left: -65px;
+}
+
+.stage-discover.active {
+  transform: scale(1) translateY(0);
+}
+
+.stage-launch {
+  bottom: 40px;
+  right: -20px;
+  transform-origin: left center;
+}
+
+.stage-launch.active {
+  transform: scale(1);
+}
+
+.stage-grow {
+  bottom: 40px;
+  left: -20px;
+  transform-origin: right center;
+}
+
+.stage-grow.active {
+  transform: scale(1);
+}
+
+/* Stage indicator dots */
+.cycle-dots {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.cycle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cycle-dot.active {
+  background: var(--coral);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px var(--coral-glow);
 }
 
 /* --- Cursor Glow --- */
@@ -1999,6 +2199,103 @@ section {
 
   .capabilities-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* --- Sticky CTA Bar --- */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(253, 248, 243, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-light);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
+  padding: 12px var(--space-lg);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.sticky-cta-bar.visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: 600px;
+  width: 100%;
+}
+
+.sticky-cta-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+  white-space: nowrap;
+}
+
+.sticky-cta-form input[type="email"] {
+  flex: 1;
+  border: 2px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 0.625rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--charcoal);
+  background: white;
+  outline: none;
+  min-width: 0;
+  transition: border-color var(--transition-fast);
+}
+
+.sticky-cta-form input[type="email"]:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px var(--coral-glow);
+}
+
+.btn-sticky {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.sticky-dismiss {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.sticky-dismiss:hover {
+  background: var(--border-light);
+  color: var(--charcoal);
+}
+
+@media (max-width: 768px) {
+  .sticky-cta-text {
+    display: none;
+  }
+
+  .sticky-cta-bar {
+    padding: 10px var(--space-md);
   }
 }
 

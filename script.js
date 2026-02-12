@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initTiltCards();
   initTextReveal();
+  initVirtuousCycle();
+  initStickyCTA();
 });
 
 /* --- Navigation Scroll Effect --- */
@@ -302,18 +304,73 @@ function initOctoBuddy() {
   let hasShownGreeting = false;
   let scrollMilestones = { '25': false, '50': false, '75': false, '100': false };
 
-  // Mouth shapes for different moods (mochi face proportions)
+  // Mouth shapes for different moods (chubby mochi face proportions)
   const mouths = {
-    neutral: 'M26 39 Q32 42, 38 39',
-    content: 'M26 39 Q32 44, 38 39',
-    happy: 'M25 38 Q32 46, 39 38',
-    veryHappy: 'M24 37 Q32 48, 40 37',
-    ecstatic: 'M23 36 Q32 50, 41 36'
+    neutral: 'M25 40 Q32 43, 39 40',
+    content: 'M25 40 Q32 46, 39 40',
+    happy: 'M24 39 Q32 48, 40 39',
+    veryHappy: 'M23 38 Q32 50, 41 38',
+    ecstatic: 'M22 37 Q32 52, 42 37'
   };
+
+  // Accessory elements
+  const sparkleAccessory = buddy.querySelector('.buddy-sparkle');
+  const hatAccessory = buddy.querySelector('.buddy-hat');
+  const streamerAccessory = buddy.querySelector('.buddy-streamer');
+
+  // Section-aware messages
+  const sectionMessages = {
+    problem: ["Yikes, that's rough...", "Sound familiar?", "We can fix this."],
+    features: ["Ooh, I can do that!", "This is where the magic happens.", "Hidden Gems are my specialty."],
+    ads: ["Watch me work!", "From insight to ad — instantly.", "No more waiting for photoshoots."],
+    'how-it-works': ["It's really that simple.", "Three steps. That's it.", "Connect and go."],
+    results: ["Not bad, right?", "A decade of DTC experience.", "We've seen it all."],
+    capabilities: ["One mochi, infinite power!", "I cover everything.", "Squishy but mighty."],
+    faq: ["Great question!", "Ask away!", "Glad you're curious."]
+  };
+  let lastSection = null;
+
+  // Track which sections we've shown messages for
+  const sectionMessageShown = {};
 
   // Show buddy after scrolling past hero
   const showThreshold = 400;
   let isVisible = false;
+
+  // Email nudge timer
+  let emailNudgeTimeout = null;
+  let hasNudged = false;
+
+  function startEmailNudge() {
+    if (hasNudged) return;
+    emailNudgeTimeout = setTimeout(() => {
+      if (!hasNudged && isVisible) {
+        hasNudged = true;
+        say("Psst... want a demo? ☝️");
+        emitParticles(['👆', '✨'], 3);
+      }
+    }, 30000);
+  }
+
+  function updateAccessories(scrollPercent) {
+    if (sparkleAccessory) sparkleAccessory.style.opacity = scrollPercent >= 25 ? '1' : '0';
+    if (hatAccessory) hatAccessory.style.opacity = scrollPercent >= 50 ? '1' : '0';
+    if (streamerAccessory) streamerAccessory.style.opacity = scrollPercent >= 75 ? '1' : '0';
+  }
+
+  function detectCurrentSection() {
+    const sections = ['problem', 'features', 'ads', 'how-it-works', 'results', 'capabilities', 'faq'];
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sections[i]);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.5) {
+          return sections[i];
+        }
+      }
+    }
+    return null;
+  }
 
   function updateOnScroll() {
     const scrollY = window.scrollY;
@@ -327,10 +384,26 @@ function initOctoBuddy() {
       if (!hasShownGreeting) {
         hasShownGreeting = true;
         setTimeout(() => say("Hey! I'm Merchie 👋"), 500);
+        startEmailNudge();
       }
     } else if (scrollY <= showThreshold && isVisible) {
       isVisible = false;
       buddy.classList.remove('visible');
+    }
+
+    // Update accessories based on scroll depth
+    updateAccessories(scrollPercent);
+
+    // Section-aware messages
+    const currentSection = detectCurrentSection();
+    if (currentSection && currentSection !== lastSection && !sectionMessageShown[currentSection]) {
+      lastSection = currentSection;
+      sectionMessageShown[currentSection] = true;
+      const msgs = sectionMessages[currentSection];
+      if (msgs) {
+        const msg = msgs[Math.floor(Math.random() * msgs.length)];
+        setTimeout(() => say(msg), 600);
+      }
     }
 
     // Progressive happiness based on scroll depth
@@ -340,28 +413,25 @@ function initOctoBuddy() {
       setMoodQuiet('content');
       if (!scrollMilestones['25']) {
         scrollMilestones['25'] = true;
-        say("Keep going! ✨");
         emitParticles(['✨'], 2);
       }
     } else if (scrollPercent < 60) {
       setMoodQuiet('happy');
       if (!scrollMilestones['50']) {
         scrollMilestones['50'] = true;
-        say("Ooh, good stuff! 🤓");
         emitParticles(['⭐', '✨'], 3);
       }
     } else if (scrollPercent < 80) {
       setMoodQuiet('veryHappy');
       if (!scrollMilestones['75']) {
         scrollMilestones['75'] = true;
-        say("Almost there! 🎯");
         emitParticles(['🌟', '⭐', '💫'], 4);
       }
     } else {
       setMoodQuiet('ecstatic');
       if (!scrollMilestones['100']) {
         scrollMilestones['100'] = true;
-        say("You made it! Join us! 🎉");
+        say("You made it! Get a demo! 🎉");
         emitParticles(['🎉', '❤️', '🌟'], 5);
         if (window.confetti) window.confetti.burst(20);
       }
@@ -429,6 +499,25 @@ function initOctoBuddy() {
       });
       scrollTicking = true;
     }
+  });
+
+  // Click on buddy for random fun reaction
+  const funReactions = [
+    { msg: "Boop! 😄", mood: 'happy', emojis: ['💕', '✨'] },
+    { msg: "That tickles!", mood: 'veryHappy', emojis: ['😆', '✨', '⭐'] },
+    { msg: "Squish! 🍡", mood: 'happy', emojis: ['🍡', '💫'] },
+    { msg: "I'm squishy!", mood: 'ecstatic', emojis: ['🎉', '💖', '✨'] },
+    { msg: "Hehe! 😊", mood: 'content', emojis: ['💗', '✨'] },
+    { msg: "Get a demo! ☝️", mood: 'happy', emojis: ['👆', '⭐'] },
+  ];
+
+  buddy.style.pointerEvents = 'auto';
+  buddy.style.cursor = 'pointer';
+  buddy.addEventListener('click', () => {
+    const reaction = funReactions[Math.floor(Math.random() * funReactions.length)];
+    setMood(reaction.mood);
+    say(reaction.msg);
+    emitParticles(reaction.emojis, 4);
   });
 
   // Expose API for form celebrations
@@ -626,6 +715,175 @@ function initTiltCards() {
       card.style.transform = '';
     });
   });
+}
+
+/* --- Virtuous Cycle Animation --- */
+function initVirtuousCycle() {
+  const stages = document.querySelectorAll('.cycle-stage');
+  const dots = document.querySelectorAll('.cycle-dot');
+  if (!stages.length) return;
+
+  let currentStage = 0;
+  let intervalId = null;
+  let isPaused = false;
+  const STAGE_DURATION = 3000;
+
+  function showStage(index) {
+    stages.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
+    currentStage = index;
+  }
+
+  function nextStage() {
+    if (isPaused) return;
+    showStage((currentStage + 1) % stages.length);
+  }
+
+  function startCycle() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(nextStage, STAGE_DURATION);
+  }
+
+  // Show first stage immediately
+  showStage(0);
+  startCycle();
+
+  // Pause on hover
+  const scene = document.querySelector('.cycle-scene');
+  if (scene) {
+    scene.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
+    scene.addEventListener('mouseleave', () => {
+      isPaused = false;
+    });
+  }
+
+  // Click dots to jump to stage
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const stage = parseInt(dot.getAttribute('data-stage'));
+      showStage(stage);
+      startCycle(); // restart timer
+    });
+  });
+}
+
+/* --- Sticky CTA Bar --- */
+function initStickyCTA() {
+  const stickyBar = document.getElementById('stickyCTABar');
+  const heroCapture = document.getElementById('heroLeadCapture');
+  const footerCapture = document.querySelector('.final-cta');
+  if (!stickyBar || !heroCapture) return;
+
+  let hasSubmitted = false;
+  let isVisible = false;
+
+  // Check if hero form has been submitted (step 2 or 3 visible)
+  function checkSubmitted() {
+    const step1 = document.getElementById('heroStep1');
+    return step1 && step1.classList.contains('hidden');
+  }
+
+  function updateVisibility() {
+    if (hasSubmitted || checkSubmitted()) {
+      stickyBar.classList.remove('visible');
+      return;
+    }
+
+    const heroRect = heroCapture.getBoundingClientRect();
+    const heroOutOfView = heroRect.bottom < 0;
+
+    let footerInView = false;
+    if (footerCapture) {
+      const footerRect = footerCapture.getBoundingClientRect();
+      footerInView = footerRect.top < window.innerHeight;
+    }
+
+    if (heroOutOfView && !footerInView) {
+      if (!isVisible) {
+        isVisible = true;
+        stickyBar.classList.add('visible');
+      }
+    } else {
+      if (isVisible) {
+        isVisible = false;
+        stickyBar.classList.remove('visible');
+      }
+    }
+  }
+
+  // Throttled scroll
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateVisibility();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Handle sticky form submission
+  const stickyForm = document.getElementById('stickyEmailForm');
+  if (stickyForm) {
+    stickyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('stickyEmail').value.trim();
+      if (!email) return;
+
+      // Identify in Customer.io
+      if (typeof _cio !== 'undefined') {
+        _cio.identify({
+          id: email,
+          email: email,
+          created_at: Math.floor(Date.now() / 1000),
+          source: 'merchie-beta',
+          signup_date: new Date().toISOString()
+        });
+      }
+
+      hasSubmitted = true;
+      stickyBar.classList.remove('visible');
+
+      // Fill the hero email and advance to step 2
+      const heroEmail = document.getElementById('heroEmail');
+      if (heroEmail) heroEmail.value = email;
+
+      // Celebration
+      if (window.octoBuddy) {
+        window.octoBuddy.setMood('happy');
+        window.octoBuddy.say("Nice! Tell me more up top!");
+        window.octoBuddy.emitParticles(['✨', '⭐', '💫'], 5);
+      }
+      if (window.confetti) window.confetti.burst(30);
+
+      // Scroll to hero and advance form
+      const heroStep1 = document.getElementById('heroStep1');
+      const heroStep2 = document.getElementById('heroStep2');
+      if (heroStep1 && heroStep2) {
+        heroStep1.classList.add('hidden');
+        heroStep2.classList.remove('hidden');
+        document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Dismiss button
+  const dismissBtn = stickyBar.querySelector('.sticky-dismiss');
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', () => {
+      stickyBar.classList.remove('visible');
+      // Don't show again for 60s
+      hasSubmitted = true;
+      setTimeout(() => { hasSubmitted = false; }, 60000);
+    });
+  }
 }
 
 /* --- Text Reveal Animation --- */

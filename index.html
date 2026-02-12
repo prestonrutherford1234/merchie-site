@@ -8,12 +8,12 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Merchie — Know your best products. Get customers to them.">
-  <meta property="og:description" content="Web merchandising intelligence that connects web behavior to product revenue and LTV. Currently in closed beta.">
+  <meta property="og:description" content="The definitive ecommerce product data and action platform. Web analytics to product-level contribution margin to LTV to autonomous ad campaigns.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://merchie.co">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>🐙</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>🍡</text></svg>">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,32 +39,35 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="/" class="nav-logo" aria-label="Merchie home">
-        <!-- Merchie the Mochi — nav icon -->
+        <!-- Merchie the Mochi — nav icon (chubby) -->
         <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs><radialGradient id="nav-shine" cx="35%" cy="30%"><stop offset="0%" stop-color="white" stop-opacity="0.5"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs>
-          <!-- Squishy mochi body -->
-          <ellipse cx="32" cy="32" rx="26" ry="24" fill="#FF6B6B"/>
-          <ellipse cx="32" cy="32" rx="26" ry="24" fill="url(#nav-shine)"/>
-          <!-- Bottom squish (sitting on surface) -->
-          <ellipse cx="32" cy="54" rx="20" ry="4" fill="#E85555" opacity="0.3"/>
+          <defs>
+            <radialGradient id="nav-shine" cx="32%" cy="28%"><stop offset="0%" stop-color="white" stop-opacity="0.5"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient>
+            <filter id="nav-fuzzy" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="3" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.5" xChannelSelector="R" yChannelSelector="G"/></filter>
+          </defs>
+          <!-- Chubby mochi body -->
+          <ellipse cx="32" cy="33" rx="28" ry="26" fill="#FF6B6B" filter="url(#nav-fuzzy)"/>
+          <ellipse cx="32" cy="33" rx="28" ry="26" fill="url(#nav-shine)"/>
+          <!-- Bottom squish -->
+          <ellipse cx="32" cy="56" rx="22" ry="5" fill="#E85555" opacity="0.25"/>
           <!-- Big round eyes -->
-          <circle cx="24" cy="30" r="6" fill="white"/>
-          <circle cx="40" cy="30" r="6" fill="white"/>
-          <circle cx="25.5" cy="30" r="3.5" fill="#1B4332"/>
-          <circle cx="41.5" cy="30" r="3.5" fill="#1B4332"/>
-          <circle cx="27" cy="28.5" r="1.2" fill="white"/>
-          <circle cx="43" cy="28.5" r="1.2" fill="white"/>
+          <circle cx="23" cy="30" r="6.5" fill="white"/>
+          <circle cx="41" cy="30" r="6.5" fill="white"/>
+          <circle cx="24.5" cy="30.5" r="3.8" fill="#1B4332"/>
+          <circle cx="42.5" cy="30.5" r="3.8" fill="#1B4332"/>
+          <circle cx="26.5" cy="28.5" r="1.4" fill="white"/>
+          <circle cx="44.5" cy="28.5" r="1.4" fill="white"/>
           <!-- Monocle -->
-          <circle cx="40" cy="30" r="8" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
-          <line x1="48" y1="30" x2="52" y2="38" stroke="#D4A84B" stroke-width="1"/>
+          <circle cx="41" cy="30" r="8.5" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
+          <line x1="49" y1="31" x2="53" y2="39" stroke="#D4A84B" stroke-width="1"/>
           <!-- Happy smile -->
-          <path d="M26 39 Q32 45, 38 39" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <!-- Rosy cheeks -->
-          <circle cx="18" cy="37" r="3" fill="#F4A261" opacity="0.4"/>
-          <circle cx="46" cy="37" r="3" fill="#F4A261" opacity="0.4"/>
-          <!-- Tiny stubby arms -->
-          <ellipse cx="8" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(-20 8 36)"/>
-          <ellipse cx="56" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(20 56 36)"/>
+          <path d="M25 40 Q32 47, 39 40" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Rosy cheeks (bigger) -->
+          <circle cx="16" cy="37" r="4" fill="#F4A261" opacity="0.45"/>
+          <circle cx="48" cy="37" r="4" fill="#F4A261" opacity="0.45"/>
+          <!-- Chubby stubby arms -->
+          <ellipse cx="6" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(-18 6 37)"/>
+          <ellipse cx="58" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(18 58 37)"/>
         </svg>
         merchie
       </a>
@@ -73,7 +76,7 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#faq">FAQ</a>
-        <span class="beta-badge-nav">Closed Beta</span>
+        <a href="#heroLeadCapture" class="btn btn-primary nav-cta">Get a Demo</a>
       </div>
 
       <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -89,7 +92,7 @@
     <a href="#features">Features</a>
     <a href="#how-it-works">How It Works</a>
     <a href="#faq">FAQ</a>
-    <span class="beta-badge" style="margin-top: 1rem;">Closed Beta</span>
+    <a href="#heroLeadCapture" class="btn btn-primary" style="margin-top: 1rem;">Get a Demo</a>
   </div>
 
   <!-- ==================== HERO ==================== -->
@@ -98,11 +101,11 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="beta-badge-wrapper">
-            <span class="beta-badge">Currently in Closed Beta</span>
-          </div>
-          <h1>Know your best products. <span class="highlight">Get customers to them.</span></h1>
-          <p class="hero-sub">Your products are the biggest driver of growth and lifetime value — not your ads, not your brand marketing. Merchie finds the products that matter most and gets them in front of the right people. Instantly.</p>
+          <p class="hero-product-label">Merchie the Mochi — Your Web Merchandising &amp; CRO Agent</p>
+          <h1>Know your best products.<br><span class="highlight">Get customers to them.</span></h1>
+          <p class="hero-tagline">The definitive ecommerce product data &amp; action platform</p>
+          <p class="hero-sub">The only platform to connect web analytics to product-level contribution margin, to product-level lifetime value, to autonomous ad campaign creation. Data &rarr; Insight &rarr; Agentic Action — on-site and through direct response campaigns.</p>
+          <p class="hero-sub hero-sub-team">The team of ecom, web merch, creative strategy, creative production, and paid media agents to 10x the speed and effectiveness of your most important workflow — powered by the constantly learning product action platform.</p>
 
           <!-- Email Capture — Step 1 -->
           <div class="lead-capture" id="heroLeadCapture">
@@ -111,11 +114,11 @@
                 <div class="input-group">
                   <input type="email" id="heroEmail" placeholder="Enter your work email" required autocomplete="email">
                   <button type="submit" class="btn btn-primary">
-                    <span>Join the Beta</span>
+                    <span>Get a Demo</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                   </button>
                 </div>
-                <p class="input-hint">Join the brands getting early access to product-level intelligence</p>
+                <p class="input-hint">See Merchie in action — request a personalized demo</p>
               </form>
             </div>
 
@@ -139,7 +142,7 @@
                   <textarea id="heroChallenge" rows="2" placeholder="What's your biggest merchandising challenge?"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">
-                  <span>Complete Sign Up</span>
+                  <span>Get a Demo</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </form>
@@ -152,7 +155,7 @@
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
                 </div>
                 <h3 class="confirmation-title">You're in.</h3>
-                <p class="confirmation-text">We'll be in touch soon with your beta access. Keep an eye on your inbox.</p>
+                <p class="confirmation-text">We'll be in touch soon with your demo details. Keep an eye on your inbox.</p>
               </div>
             </div>
           </div>
@@ -161,134 +164,234 @@
         </div>
 
         <div class="hero-visual">
-          <!-- Hero — Merchie the Mochi -->
-          <svg class="mochi-svg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Virtuous Cycle Scene -->
+          <div class="cycle-scene">
+            <!-- Stage labels orbiting around -->
+            <div class="cycle-stage stage-discover">
+              <div class="cycle-stage-inner">
+                <div class="cycle-icon">🔍</div>
+                <div class="cycle-label">Discover</div>
+                <div class="cycle-desc">Find Hidden Gems</div>
+              </div>
+            </div>
+            <div class="cycle-stage stage-launch">
+              <div class="cycle-stage-inner">
+                <div class="cycle-icon">🚀</div>
+                <div class="cycle-label">Launch</div>
+                <div class="cycle-desc">Spin Up Campaigns</div>
+              </div>
+            </div>
+            <div class="cycle-stage stage-grow">
+              <div class="cycle-stage-inner">
+                <div class="cycle-icon">📈</div>
+                <div class="cycle-label">Grow</div>
+                <div class="cycle-desc">Revenue Flows Back</div>
+              </div>
+            </div>
+
+            <!-- Circular arrows SVG -->
+            <svg class="cycle-arrows" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Circular path for arrow flow -->
+              <defs>
+                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="#FF6B6B" opacity="0.4"/>
+                </marker>
+              </defs>
+              <!-- Dashed circle connecting stages -->
+              <circle cx="210" cy="210" r="170" stroke="#FF6B6B" stroke-width="2" stroke-dasharray="8 6" fill="none" opacity="0.2"/>
+              <!-- Arrow segments -->
+              <path d="M 320 100 A 170 170 0 0 1 350 260" stroke="#FF6B6B" stroke-width="2.5" fill="none" opacity="0.35" marker-end="url(#arrowhead)"/>
+              <path d="M 320 310 A 170 170 0 0 1 100 310" stroke="#F4A261" stroke-width="2.5" fill="none" opacity="0.35" marker-end="url(#arrowhead)"/>
+              <path d="M 80 260 A 170 170 0 0 1 130 90" stroke="#1B4332" stroke-width="2.5" fill="none" opacity="0.25" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <!-- Mochi (center, always visible) -->
+            <svg class="mochi-svg cycle-mochi" width="220" height="220" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <!-- MOCHI_START -->
             <defs>
-              <linearGradient id="body-gradient" x1="120" y1="60" x2="300" y2="320">
-                <stop offset="0%" stop-color="#FFB3B3"/>
-                <stop offset="40%" stop-color="#FF8A8A"/>
+              <linearGradient id="body-gradient" x1="120" y1="60" x2="300" y2="340">
+                <stop offset="0%" stop-color="#FFCECE"/>
+                <stop offset="30%" stop-color="#FFB3B3"/>
+                <stop offset="70%" stop-color="#FF8A8A"/>
                 <stop offset="100%" stop-color="#FF6B6B"/>
               </linearGradient>
-              <radialGradient id="head-shine" cx="32%" cy="28%" r="55%">
-                <stop offset="0%" stop-color="white" stop-opacity="0.35"/>
+              <radialGradient id="head-shine" cx="30%" cy="25%" r="50%">
+                <stop offset="0%" stop-color="white" stop-opacity="0.45"/>
+                <stop offset="60%" stop-color="white" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="belly-shine" cx="50%" cy="70%" r="40%">
+                <stop offset="0%" stop-color="white" stop-opacity="0.12"/>
                 <stop offset="100%" stop-color="white" stop-opacity="0"/>
               </radialGradient>
               <radialGradient id="cheek-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.55"/>
+                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.6"/>
                 <stop offset="100%" stop-color="#F4A261" stop-opacity="0"/>
               </radialGradient>
               <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#FF6B6B" flood-opacity="0.2"/>
+                <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#FF6B6B" flood-opacity="0.25"/>
+              </filter>
+              <!-- Fuzzy/plush edge filter -->
+              <filter id="fuzzy-edge" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" result="turbulence" seed="3"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3" xChannelSelector="R" yChannelSelector="G"/>
               </filter>
               <linearGradient id="monocle-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#F4D03F"/>
                 <stop offset="50%" stop-color="#D4A84B"/>
                 <stop offset="100%" stop-color="#B8860B"/>
               </linearGradient>
+              <!-- Monocle lens glint -->
+              <radialGradient id="lens-glint" cx="35%" cy="30%" r="50%">
+                <stop offset="0%" stop-color="white" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
             </defs>
 
             <!-- Shadow on ground -->
-            <ellipse cx="210" cy="370" rx="100" ry="16" fill="#E0D5C8" opacity="0.4">
-              <animate attributeName="rx" values="100;95;100" dur="3s" repeatCount="indefinite"/>
+            <ellipse cx="210" cy="375" rx="110" ry="18" fill="#E0D5C8" opacity="0.35">
+              <animate attributeName="rx" values="110;104;110" dur="3s" repeatCount="indefinite"/>
             </ellipse>
 
-            <!-- Main mochi body -->
+            <!-- Main mochi body — CHUBBY version -->
             <g class="body-main" filter="url(#soft-shadow)">
-              <!-- Big squishy mochi shape — wider at bottom -->
-              <path d="M100 210 C100 110, 140 60, 210 60 C280 60, 320 110, 320 210 C320 290, 295 340, 210 340 C125 340, 100 290, 100 210Z" fill="url(#body-gradient)"/>
-              <path d="M100 210 C100 110, 140 60, 210 60 C280 60, 320 110, 320 210 C320 290, 295 340, 210 340 C125 340, 100 290, 100 210Z" fill="url(#head-shine)"/>
+              <!-- Big chubby mochi shape — much wider, rounder, more squished -->
+              <path d="M85 215 C85 115, 130 50, 210 50 C290 50, 335 115, 335 215 C335 300, 305 355, 210 355 C115 355, 85 300, 85 215Z" fill="url(#body-gradient)" filter="url(#fuzzy-edge)"/>
+              <path d="M85 215 C85 115, 130 50, 210 50 C290 50, 335 115, 335 215 C335 300, 305 355, 210 355 C115 355, 85 300, 85 215Z" fill="url(#head-shine)"/>
+              <!-- Soft belly highlight for roundness -->
+              <ellipse cx="210" cy="280" rx="80" ry="50" fill="url(#belly-shine)"/>
 
-              <!-- Mochi texture — soft highlights -->
-              <ellipse cx="170" cy="110" rx="30" ry="15" fill="white" opacity="0.08" transform="rotate(-15 170 110)"/>
-              <ellipse cx="260" cy="100" rx="22" ry="10" fill="white" opacity="0.06" transform="rotate(10 260 100)"/>
+              <!-- Fuzzy texture — soft wispy highlights across body -->
+              <ellipse cx="160" cy="105" rx="35" ry="16" fill="white" opacity="0.1" transform="rotate(-18 160 105)"/>
+              <ellipse cx="265" cy="95" rx="28" ry="12" fill="white" opacity="0.08" transform="rotate(12 265 95)"/>
+              <ellipse cx="145" cy="260" rx="25" ry="10" fill="white" opacity="0.06" transform="rotate(-10 145 260)"/>
+              <ellipse cx="280" cy="270" rx="20" ry="8" fill="white" opacity="0.05" transform="rotate(15 280 270)"/>
+              <!-- Tiny fuzzy fringe marks around edge -->
+              <path d="M130 80 Q135 72, 140 78" stroke="white" stroke-width="1.5" fill="none" opacity="0.08"/>
+              <path d="M270 70 Q278 64, 282 72" stroke="white" stroke-width="1.5" fill="none" opacity="0.07"/>
+              <path d="M95 180 Q88 175, 92 168" stroke="white" stroke-width="1.5" fill="none" opacity="0.06"/>
+              <path d="M325 195 Q332 188, 330 182" stroke="white" stroke-width="1.5" fill="none" opacity="0.06"/>
 
               <!-- Big round kawaii eyes -->
-              <circle cx="175" cy="185" r="30" fill="white"/>
-              <circle cx="180" cy="190" r="16" fill="#1B4332"/>
-              <circle cx="186" cy="182" r="6" fill="white" opacity="0.9"/>
-              <circle cx="176" cy="196" r="3" fill="white" opacity="0.4"/>
-              <circle cx="250" cy="185" r="30" fill="white"/>
-              <circle cx="245" cy="190" r="16" fill="#1B4332"/>
-              <circle cx="251" cy="182" r="6" fill="white" opacity="0.9"/>
-              <circle cx="241" cy="196" r="3" fill="white" opacity="0.4"/>
+              <circle cx="172" cy="185" r="33" fill="white"/>
+              <circle cx="178" cy="191" r="18" fill="#1B4332"/>
+              <circle cx="185" cy="182" r="7" fill="white" opacity="0.9"/>
+              <circle cx="174" cy="198" r="3.5" fill="white" opacity="0.4"/>
+              <circle cx="252" cy="185" r="33" fill="white"/>
+              <circle cx="246" cy="191" r="18" fill="#1B4332"/>
+              <circle cx="253" cy="182" r="7" fill="white" opacity="0.9"/>
+              <circle cx="242" cy="198" r="3.5" fill="white" opacity="0.4"/>
 
               <!-- Monocle on right eye -->
-              <circle cx="250" cy="185" r="36" stroke="url(#monocle-gold)" stroke-width="3.5" fill="none"/>
-              <path d="M222 162 Q228 156, 236 154" stroke="#F4D03F" stroke-width="1.5" fill="none" opacity="0.6"/>
-              <path d="M286 185 C294 198, 296 215, 290 235 C286 248, 280 255, 276 262" stroke="url(#monocle-gold)" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
-              <circle cx="286" cy="185" r="2.5" fill="#D4A84B"/>
+              <circle cx="252" cy="185" r="39" stroke="url(#monocle-gold)" stroke-width="3.5" fill="none"/>
+              <!-- Lens glint -->
+              <circle cx="252" cy="185" r="39" fill="url(#lens-glint)">
+                <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <path d="M221 160 Q227 153, 236 150" stroke="#F4D03F" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <path d="M291 185 C299 200, 301 218, 295 240 C290 254, 284 262, 280 268" stroke="url(#monocle-gold)" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
+              <circle cx="291" cy="185" r="2.5" fill="#D4A84B"/>
 
               <!-- Raised studious eyebrow -->
-              <path d="M230 148 Q250 138, 270 146" stroke="#E85555" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M232 146 Q252 134, 274 143" stroke="#E85555" stroke-width="3.5" stroke-linecap="round" fill="none"/>
 
-              <!-- Big happy smile -->
-              <path d="M190 235 Q212 260, 235 235" stroke="#C73D75" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <!-- Big happy smile — wider for chubby face -->
+              <path d="M185 240 Q212 268, 240 240" stroke="#C73D75" stroke-width="4.5" stroke-linecap="round" fill="none"/>
 
-              <!-- Rosy cheeks -->
-              <circle cx="148" cy="225" r="18" fill="url(#cheek-glow)"/>
-              <circle cx="278" cy="225" r="18" fill="url(#cheek-glow)"/>
+              <!-- Rosy cheeks — bigger for chubby look -->
+              <circle cx="140" cy="228" r="22" fill="url(#cheek-glow)"/>
+              <circle cx="284" cy="228" r="22" fill="url(#cheek-glow)"/>
             </g>
 
-            <!-- Left arm — stubby, holding a bar chart -->
+            <!-- Left arm — chubby stubby, holding a bar chart -->
             <g class="mochi-arm-l">
-              <ellipse cx="80" cy="220" rx="28" ry="16" fill="#FF8A8A" transform="rotate(-25 80 220)"/>
-              <ellipse cx="65" cy="210" rx="12" ry="8" fill="#FF9E9E" transform="rotate(-25 65 210)"/>
-              <g transform="translate(28, 195) rotate(-12)">
-                <rect x="0" y="0" width="50" height="40" rx="6" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
-                <rect x="7" y="22" width="8" height="12" rx="2" fill="#FF6B6B" opacity="0.8"/>
-                <rect x="17" y="14" width="8" height="20" rx="2" fill="#1B4332" opacity="0.7"/>
-                <rect x="27" y="18" width="8" height="16" rx="2" fill="#F4A261" opacity="0.8"/>
-                <rect x="37" y="8" width="8" height="26" rx="2" fill="#1B4332" opacity="0.9"/>
+              <ellipse cx="72" cy="225" rx="32" ry="20" fill="#FF8A8A" transform="rotate(-22 72 225)" filter="url(#fuzzy-edge)"/>
+              <ellipse cx="55" cy="212" rx="14" ry="10" fill="#FF9E9E" transform="rotate(-22 55 212)"/>
+              <g transform="translate(18, 195) rotate(-12)">
+                <rect x="0" y="0" width="52" height="42" rx="6" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+                <rect x="7" y="23" width="9" height="13" rx="2" fill="#FF6B6B" opacity="0.8"/>
+                <rect x="18" y="14" width="9" height="22" rx="2" fill="#1B4332" opacity="0.7"/>
+                <rect x="29" y="18" width="9" height="18" rx="2" fill="#F4A261" opacity="0.8"/>
+                <rect x="40" y="8" width="9" height="28" rx="2" fill="#1B4332" opacity="0.9"/>
               </g>
             </g>
 
-            <!-- Right arm — stubby, placing a product card -->
+            <!-- Right arm — chubby stubby, placing a product card -->
             <g class="mochi-arm-r">
-              <ellipse cx="340" cy="220" rx="28" ry="16" fill="#FF8A8A" transform="rotate(25 340 220)"/>
-              <ellipse cx="355" cy="210" rx="12" ry="8" fill="#FF9E9E" transform="rotate(25 355 210)"/>
-              <g transform="translate(348, 190) rotate(8)">
-                <rect x="0" y="0" width="56" height="66" rx="7" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
-                <rect x="7" y="7" width="42" height="26" rx="4" fill="#FDF8F3"/>
-                <rect x="7" y="38" width="26" height="3.5" rx="1.5" fill="#E0E0E0"/>
-                <rect x="7" y="46" width="18" height="3.5" rx="1.5" fill="#1B4332" opacity="0.3"/>
-                <rect x="7" y="54" width="34" height="8" rx="4" fill="rgba(27,67,50,0.1)"/>
-                <text x="11" y="61" font-size="5.5" font-weight="700" fill="#1B4332" font-family="Inter, sans-serif">HIDDEN GEM</text>
+              <ellipse cx="348" cy="225" rx="32" ry="20" fill="#FF8A8A" transform="rotate(22 348 225)" filter="url(#fuzzy-edge)"/>
+              <ellipse cx="365" cy="212" rx="14" ry="10" fill="#FF9E9E" transform="rotate(22 365 212)"/>
+              <g transform="translate(352, 192) rotate(8)">
+                <rect x="0" y="0" width="58" height="68" rx="7" fill="white" stroke="#E0E0E0" stroke-width="1.5"/>
+                <rect x="7" y="7" width="44" height="28" rx="4" fill="#FDF8F3"/>
+                <rect x="7" y="40" width="28" height="3.5" rx="1.5" fill="#E0E0E0"/>
+                <rect x="7" y="48" width="20" height="3.5" rx="1.5" fill="#1B4332" opacity="0.3"/>
+                <rect x="7" y="56" width="36" height="8" rx="4" fill="rgba(27,67,50,0.1)"/>
+                <text x="11" y="63" font-size="5.5" font-weight="700" fill="#1B4332" font-family="Inter, sans-serif">HIDDEN GEM</text>
               </g>
             </g>
 
-            <!-- Tiny feet -->
-            <ellipse cx="185" cy="345" rx="18" ry="8" fill="#FF8A8A"/>
-            <ellipse cx="235" cy="345" rx="18" ry="8" fill="#FF8A8A"/>
+            <!-- Chubby tiny feet -->
+            <ellipse cx="182" cy="358" rx="22" ry="10" fill="#FF8A8A" filter="url(#fuzzy-edge)"/>
+            <ellipse cx="238" cy="358" rx="22" ry="10" fill="#FF8A8A" filter="url(#fuzzy-edge)"/>
 
             <!-- Gold sparkles -->
-            <circle cx="300" cy="140" r="3.5" fill="#F4D03F" opacity="0.6">
+            <circle cx="305" cy="130" r="4" fill="#F4D03F" opacity="0.6">
               <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="310" cy="175" r="2.5" fill="#F4D03F" opacity="0.5">
+            <circle cx="318" cy="170" r="3" fill="#F4D03F" opacity="0.5">
               <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.5s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="120" cy="100" r="3" fill="#F4A261" opacity="0.5">
+            <circle cx="112" cy="95" r="3.5" fill="#F4A261" opacity="0.5">
               <animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="95" cy="200" r="2" fill="#F4A261" opacity="0.3">
+            <circle cx="88" cy="200" r="2.5" fill="#F4A261" opacity="0.3">
               <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Extra sparkles for chubby charm -->
+            <circle cx="340" cy="110" r="2" fill="#F4D03F" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="80" cy="140" r="2.5" fill="#FFB3B3" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.2s" repeatCount="indefinite"/>
             </circle>
 
             <!-- MOCHI_END -->
-          </svg>
+            </svg>
+
+            <!-- Stage indicator dots -->
+            <div class="cycle-dots">
+              <span class="cycle-dot active" data-stage="0"></span>
+              <span class="cycle-dot" data-stage="1"></span>
+              <span class="cycle-dot" data-stage="2"></span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Social Proof -->
+      <!-- Social Proof — Chubbies Track Record -->
       <div class="social-proof">
         <p class="social-proof-label">Built by the team behind Chubbies Shorts</p>
-        <div class="logo-bar">
-          <div class="logo-placeholder"></div>
-          <div class="logo-placeholder"></div>
-          <div class="logo-placeholder"></div>
-          <div class="logo-placeholder"></div>
-          <div class="logo-placeholder"></div>
+        <div class="chubbies-stats">
+          <div class="chubbies-stat">
+            <span class="chubbies-stat-value">2011</span>
+            <span class="chubbies-stat-label">Founded</span>
+          </div>
+          <div class="chubbies-stat-divider"></div>
+          <div class="chubbies-stat">
+            <span class="chubbies-stat-value">$100M+</span>
+            <span class="chubbies-stat-label">Exit</span>
+          </div>
+          <div class="chubbies-stat-divider"></div>
+          <div class="chubbies-stat">
+            <span class="chubbies-stat-value">7 Years</span>
+            <span class="chubbies-stat-label">Consecutive Top &amp; Bottom Line Growth</span>
+          </div>
+          <div class="chubbies-stat-divider"></div>
+          <div class="chubbies-stat">
+            <span class="chubbies-stat-value">Still Growing</span>
+            <span class="chubbies-stat-label">Growth continues to this day</span>
+          </div>
         </div>
       </div>
     </div>
@@ -542,8 +645,8 @@
   <section class="octopus-section" id="capabilities">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2>Eight arms. Every angle covered.</h2>
-        <p>Merchie wraps around your entire ecommerce operation — every tentacle working a different angle, all coordinated by a very smart brain.</p>
+        <h2>One mochi. Every angle covered.</h2>
+        <p>Merchie stretches across your entire ecommerce operation — every capability working a different angle, all coordinated by a very smart (and very squishy) brain.</p>
       </div>
 
       <div class="capabilities-grid">
@@ -657,7 +760,6 @@
   <section class="final-cta">
     <div class="container">
       <div class="animate-on-scroll">
-        <span class="beta-badge" style="margin-bottom: var(--space-md); display: inline-block;">Closed Beta</span>
         <h2>Stop guessing. Start merching.</h2>
         <p>Join the brands that know exactly which products to push — and how to push them.</p>
 
@@ -668,7 +770,7 @@
               <div class="input-group input-group-dark">
                 <input type="email" id="footerEmail" placeholder="Enter your work email" required autocomplete="email">
                 <button type="submit" class="btn btn-primary">
-                  <span>Join the Beta</span>
+                  <span>Get a Demo</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
@@ -680,7 +782,7 @@
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
               </div>
               <h3 class="confirmation-title">You're in.</h3>
-              <p class="confirmation-text">We'll be in touch soon with your beta access.</p>
+              <p class="confirmation-text">We'll be in touch soon with your demo details.</p>
             </div>
           </div>
         </div>
@@ -695,17 +797,20 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <!-- Merchie the Mochi — footer icon -->
+            <!-- Merchie the Mochi — footer icon (chubby) -->
             <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="32" cy="32" rx="26" ry="24" fill="#FF6B6B"/>
-              <circle cx="24" cy="30" r="6" fill="white"/>
-              <circle cx="40" cy="30" r="6" fill="white"/>
-              <circle cx="25.5" cy="30" r="3.5" fill="#1B4332"/>
-              <circle cx="41.5" cy="30" r="3.5" fill="#1B4332"/>
-              <circle cx="40" cy="30" r="8" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
-              <path d="M26 39 Q32 45, 38 39" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <ellipse cx="8" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(-20 8 36)"/>
-              <ellipse cx="56" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(20 56 36)"/>
+              <defs><filter id="ft-fuzzy" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="3" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.5" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+              <ellipse cx="32" cy="33" rx="28" ry="26" fill="#FF6B6B" filter="url(#ft-fuzzy)"/>
+              <circle cx="23" cy="30" r="6.5" fill="white"/>
+              <circle cx="41" cy="30" r="6.5" fill="white"/>
+              <circle cx="24.5" cy="30.5" r="3.8" fill="#1B4332"/>
+              <circle cx="42.5" cy="30.5" r="3.8" fill="#1B4332"/>
+              <circle cx="41" cy="30" r="8.5" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
+              <path d="M25 40 Q32 47, 39 40" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <circle cx="16" cy="37" r="4" fill="#F4A261" opacity="0.4"/>
+              <circle cx="48" cy="37" r="4" fill="#F4A261" opacity="0.4"/>
+              <ellipse cx="6" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(-18 6 37)"/>
+              <ellipse cx="58" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(18 58 37)"/>
             </svg>
             merchie
           </div>
@@ -746,33 +851,60 @@
     </div>
   </footer>
 
+  <!-- Sticky CTA Bar -->
+  <div id="stickyCTABar" class="sticky-cta-bar" aria-hidden="true">
+    <form class="sticky-cta-form" id="stickyEmailForm">
+      <span class="sticky-cta-text">Get a Demo</span>
+      <input type="email" id="stickyEmail" placeholder="Enter your work email" required autocomplete="email">
+      <button type="submit" class="btn btn-primary btn-sticky">Get a Demo</button>
+    </form>
+    <button class="sticky-dismiss" aria-label="Dismiss">&times;</button>
+  </div>
+
   <!-- Floating Mochi Buddy -->
   <div id="octoBuddy" class="octo-buddy" aria-hidden="true">
     <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><radialGradient id="buddy-shine" cx="32%" cy="28%"><stop offset="0%" stop-color="white" stop-opacity="0.4"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs>
-      <!-- Squishy mochi body -->
-      <ellipse cx="32" cy="32" rx="26" ry="24" fill="#FF6B6B"/>
-      <ellipse cx="32" cy="32" rx="26" ry="24" fill="url(#buddy-shine)"/>
+      <defs>
+        <radialGradient id="buddy-shine" cx="30%" cy="26%"><stop offset="0%" stop-color="white" stop-opacity="0.45"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient>
+        <filter id="buddy-fuzzy" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="3" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.5" xChannelSelector="R" yChannelSelector="G"/></filter>
+      </defs>
+      <!-- Chubby mochi body -->
+      <ellipse cx="32" cy="33" rx="28" ry="26" fill="#FF6B6B" filter="url(#buddy-fuzzy)"/>
+      <ellipse cx="32" cy="33" rx="28" ry="26" fill="url(#buddy-shine)"/>
       <!-- Bottom squish -->
-      <ellipse cx="32" cy="54" rx="20" ry="4" fill="#E85555" opacity="0.25"/>
-      <!-- Eyes -->
-      <circle cx="24" cy="30" r="6" fill="white"/>
-      <circle cx="40" cy="30" r="6" fill="white"/>
-      <circle class="buddy-pupil-l" cx="25.5" cy="30" r="3.5" fill="#1B4332"/>
-      <circle class="buddy-pupil-r" cx="41.5" cy="30" r="3.5" fill="#1B4332"/>
-      <circle cx="27" cy="28.5" r="1.2" fill="white"/>
-      <circle cx="43" cy="28.5" r="1.2" fill="white"/>
+      <ellipse cx="32" cy="56" rx="22" ry="5" fill="#E85555" opacity="0.2"/>
+      <!-- Eyes (bigger for chubby face) -->
+      <circle cx="23" cy="30" r="6.5" fill="white"/>
+      <circle cx="41" cy="30" r="6.5" fill="white"/>
+      <circle class="buddy-pupil-l" cx="24.5" cy="30.5" r="3.8" fill="#1B4332"/>
+      <circle class="buddy-pupil-r" cx="42.5" cy="30.5" r="3.8" fill="#1B4332"/>
+      <circle cx="26.5" cy="28.5" r="1.4" fill="white"/>
+      <circle cx="44.5" cy="28.5" r="1.4" fill="white"/>
       <!-- Monocle -->
-      <circle cx="40" cy="30" r="8" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
-      <line x1="48" y1="30" x2="52" y2="38" stroke="#D4A84B" stroke-width="1"/>
+      <circle cx="41" cy="30" r="8.5" stroke="#D4A84B" stroke-width="1.5" fill="none"/>
+      <line x1="49" y1="31" x2="53" y2="39" stroke="#D4A84B" stroke-width="1"/>
       <!-- Mouth (changes with mood) -->
-      <path class="buddy-mouth" d="M26 39 Q32 42, 38 39" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- Cheeks (grow with happiness) -->
-      <circle class="buddy-cheek-l" cx="18" cy="37" r="3" fill="#F4A261" opacity="0.3"/>
-      <circle class="buddy-cheek-r" cx="46" cy="37" r="3" fill="#F4A261" opacity="0.3"/>
-      <!-- Stubby arms -->
-      <ellipse cx="8" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(-20 8 36)"/>
-      <ellipse cx="56" cy="36" rx="5" ry="3.5" fill="#FF8A8A" transform="rotate(20 56 36)"/>
+      <path class="buddy-mouth" d="M25 40 Q32 43, 39 40" stroke="#C73D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- Cheeks (grow with happiness) — bigger for chubby -->
+      <circle class="buddy-cheek-l" cx="15" cy="38" r="4" fill="#F4A261" opacity="0.3"/>
+      <circle class="buddy-cheek-r" cx="49" cy="38" r="4" fill="#F4A261" opacity="0.3"/>
+      <!-- Chubby stubby arms -->
+      <ellipse class="buddy-arm-l" cx="6" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(-18 6 37)"/>
+      <ellipse class="buddy-arm-r" cx="58" cy="37" rx="6" ry="4.5" fill="#FF8A8A" transform="rotate(18 58 37)"/>
+      <!-- Accessories (hidden by default, shown via JS) -->
+      <g class="buddy-accessory buddy-sparkle" style="opacity:0;transition:opacity 0.5s ease">
+        <circle cx="52" cy="12" r="3" fill="#F4D03F"/>
+        <circle cx="56" cy="18" r="2" fill="#F4D03F" opacity="0.6"/>
+      </g>
+      <g class="buddy-accessory buddy-hat" style="opacity:0;transition:opacity 0.5s ease">
+        <polygon points="32,2 22,18 42,18" fill="#F4A261"/>
+        <circle cx="32" cy="2" r="3" fill="#F4D03F"/>
+        <rect x="20" y="16" width="24" height="4" rx="2" fill="#E08C47"/>
+      </g>
+      <g class="buddy-accessory buddy-streamer" style="opacity:0;transition:opacity 0.5s ease">
+        <path d="M6 30 Q-5 20, -2 10 Q0 5, 5 8" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+        <path d="M6 28 Q-8 22, -4 14 Q-1 9, 3 12" stroke="#F4A261" stroke-width="1.5" fill="none"/>
+      </g>
     </svg>
     <!-- Speech bubble -->
     <div class="buddy-bubble" id="buddyBubble"></div>
