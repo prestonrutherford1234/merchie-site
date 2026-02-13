@@ -2728,66 +2728,10 @@ section {
 
   .hero-visual {
     order: -1;
-    max-width: 280px;
+    max-width: 300px;
     margin: 0 auto;
     width: 100%;
-  }
-
-  .cycle-scene {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-    max-width: 280px;
-  }
-
-  .cycle-arrows {
-    width: 100%;
-    height: 100%;
-  }
-
-  .cycle-mochi {
-    width: 140px;
-    height: 140px;
-  }
-
-  .cycle-stage-inner {
-    min-width: 100px;
-    padding: 8px 12px;
-  }
-
-  .cycle-icon {
-    font-size: 1.25rem;
-    margin-bottom: 2px;
-  }
-
-  .cycle-label {
-    font-size: 0.75rem;
-  }
-
-  .cycle-desc {
-    font-size: 0.625rem;
-  }
-
-  .stage-discover {
-    top: -14px;
-    margin-left: -50px;
-  }
-
-  .stage-launch {
-    bottom: 20px;
-    right: -10px;
-  }
-
-  .stage-grow {
-    bottom: 20px;
-    left: -10px;
-  }
-
-  .hero-mochi-bubble {
-    font-size: 11px;
-    padding: 6px 10px;
-    top: 20px;
-    right: -5px;
+    overflow: hidden;
   }
 
   .cycle-scene {
