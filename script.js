@@ -218,8 +218,10 @@ function initSignupForms() {
       const company = document.getElementById('heroCompany').value.trim();
       const revenue = document.getElementById('heroRevenue').value;
       const challenge = document.getElementById('heroChallenge').value.trim();
+      const signup = { email, company, revenue, challenge, source: 'merchie-hero-demo' };
 
-      identifyInCIO({ email, company, revenue, challenge });
+      identifyInCIO(signup);
+      sendSignupRelay(signup);
       transitionStep('heroStep2', 'heroStep3');
 
       triggerMochiCelebration();
@@ -249,8 +251,10 @@ function initSignupForms() {
       const company = document.getElementById('footerCompany').value.trim();
       const revenue = document.getElementById('footerRevenue').value;
       const challenge = document.getElementById('footerChallenge').value.trim();
+      const signup = { email, company, revenue, challenge, source: 'merchie-footer-demo' };
 
-      identifyInCIO({ email, company, revenue, challenge });
+      identifyInCIO(signup);
+      sendSignupRelay(signup);
       transitionStep('footerStep2', 'footerStep3');
 
       triggerMochiCelebration();
@@ -356,6 +360,28 @@ function initSignupForms() {
     if (data.challenge) payload.biggest_challenge = data.challenge;
 
     _cio.identify(payload);
+  }
+
+  function sendSignupRelay(data) {
+    const relayUrl = window.MERCHIE_SIGNUP_RELAY || window.ENGINE_SIGNUP_RELAY || '';
+    if (!relayUrl || !data.email) return;
+
+    const payload = {
+      timestamp: new Date().toISOString(),
+      source: data.source || 'merchie-beta',
+      email: data.email,
+      company: data.company || '',
+      revenue: data.revenue || '',
+      spend: '',
+      interest: data.challenge || ''
+    };
+
+    fetch(relayUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    }).catch(() => {});
   }
 
   function transitionStep(fromId, toId) {
